@@ -23,24 +23,25 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Checkout latest Mock configs
-        uses: actions/checkout@v4
-        with:
-          repository: terrapkg/mock-configs
-          path: mock-configs
-
       - name: Set up git repository
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
-      - name: Include custom build template instead of package default
+      - name: CI Setup Script
+        if: ${{ !contains(matrix.pkg.labels, 'mock') }}
         run: |
-          cp -v mock-configs/terra-el.tpl /etc/mock/templates/
-          cp -v mock-configs/terra-el-dev.tpl /etc/mock/templates/
+          dir=$(dirname ${{ matrix.pkg.pkg }})
+          if [ -f $dir/ci_setup.rhai ]; then
+            anda run $dir/ci_setup.rhai --labels script_path=$dir/ci_setup.rhai
+          fi
+
+      - name: Install Build Dependencies
+        if: ${{ !contains(matrix.pkg.labels, 'mock') }}
+        run: |
+          dir=$(dirname ${{ matrix.pkg.pkg }})
+          dnf5 builddep -y ${dir}/*.spec
 
       - name: Build with Andaman
-        run: |
-          dnf builddep -y `echo ${{ matrix.pkg.pkg }} | sed -E 's@/pkg$@/*.spec@'`
-          anda build ${{ matrix.pkg.pkg }} -rrpmbuild
+        run: anda build ${{ matrix.pkg.pkg }} -c terra-el${{ matrix.version }}-dev-${{ matrix.pkg.arch }} ${{ contains(matrix.pkg.labels, 'mock') && '' || '-rrpmbuild' }}
 
       - name: Generating artifact name
         id: art
@@ -65,7 +66,6 @@ jobs:
             terrael${{ matrix.version }} anda-build/rpm/rpms/*
 
       - name: Upload source packages to subatomic
-        if: github.event_name == 'push'
         run: |
           subatomic-cli upload --prune \
             --server https://subatomic.fyralabs.com \

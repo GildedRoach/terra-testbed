@@ -21,7 +21,7 @@ jobs:
       pkgs: ${{ steps.parsing.outputs.pkgs }}
       builder: ${{ inputs.custom_builder }}
       arch: ${{ steps.parsing.outputs.arch }}
-    runs-on: "ubuntu-latest"
+    runs-on: ubuntu-22.04
     steps:
       - name: Parse Input
         id: parsing
@@ -44,12 +44,12 @@ jobs:
     strategy:
       matrix:
         pkg: ${{ fromJson(needs.parse.outputs.pkgs) }}
-        version: ["10"]
+        version: ["rawhide"]
         arch: ${{ fromJson(needs.parse.outputs.arch) }}
       fail-fast: false
     runs-on: ${{ matrix.arch == 'aarch64' && 'ubuntu-22.04-arm' || needs.parse.outputs.builder && needs.parse.outputs.builder || 'ubuntu-22.04' }}
     container:
-      image: ghcr.io/terrapkg/builder:el${{ matrix.version }}
+      image: ghcr.io/terrapkg/builder:f${{ matrix.version }}
       options: --cap-add=SYS_ADMIN --privileged
     steps:
       - name: Checkout
@@ -57,24 +57,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Checkout latest Mock configs
-        uses: actions/checkout@v4
-        with:
-          repository: terrapkg/mock-configs
-          path: mock-configs
-
       - name: Set up git repository
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
-      - name: Include custom build template instead of package default
-        run: |
-          cp -v mock-configs/terra-el.tpl /etc/mock/templates/
-          cp -v mock-configs/terra-el-dev.tpl /etc/mock/templates/
-
       - name: Build with Andaman
-        run: |
-          dnf builddep -y anda/${{ matrix.pkg }}*.spec
-          anda build anda/${{ matrix.pkg }}pkg -rrpmbuild
+        run: anda build -c terra-el${{ matrix.version }}-dev-${{ matrix.arch }} anda/${{ matrix.pkg }}pkg
 
       - name: Generating artifact name
         id: art
@@ -82,6 +69,7 @@ jobs:
           NAME=${{ matrix.pkg }}-${{ matrix.arch }}-${{ matrix.version }}
           x=${NAME//\//@}
           echo "name=$x" >> $GITHUB_OUTPUT
+          echo "labels=$(anda run andax/get_proj_label.rhai -l project=anda/${{ matrix.pkg }}anda.hcl)" >> $GITHUB_OUTPUT
 
       - uses: actions/upload-artifact@v4
         with:
