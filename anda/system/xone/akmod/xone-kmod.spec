@@ -15,6 +15,7 @@
 %global commitdate 20241223
 %global commitdate 20241223
 %global commitdate 20241223
+%global commitdate 20241223
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 %global commitdate 20241223
 %global ver 0.3
