@@ -12,7 +12,7 @@
 
 
 
-%global __brp_mangle_shebangs %{nil}
+
 
 # Exclude input files from mangling
 %global __brp_mangle_shebangs_exclude_from ^/usr/src/.*$
