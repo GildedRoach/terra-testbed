@@ -1,5 +1,5 @@
 Name:          uwufetch
-Version:       2.1
+Version:       
 Release:       1%?dist
 Summary:       A meme system info tool for Linux, based on nyan/uwu trend on r/linuxmasterrace.
 License:       GPL-3.0
