@@ -11,7 +11,7 @@
 
 
 
-# Don't mangle shebangs
+
 %global __brp_mangle_shebangs %{nil}
 
 # Exclude input files from mangling
