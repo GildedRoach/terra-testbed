@@ -14,7 +14,7 @@
 
 
 
-# Exclude input files from mangling
+d6863d970d2686dd6282142af57503e1f2d561dc
 %global __brp_mangle_shebangs_exclude_from ^/usr/src/.*$
 # Use Mold as the linker
 %global build_rustflags %build_rustflags -C link-arg=-fuse-ld=mold
