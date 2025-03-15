@@ -9,7 +9,7 @@
 
 
 
-# This fork has no tags so we're gonna use the commit hash as the version
+
 
 # Don't mangle shebangs
 %global __brp_mangle_shebangs %{nil}
