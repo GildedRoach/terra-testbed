@@ -8,7 +8,7 @@
 
 
 
-# the same fork as Bazzite so we can use the same patches.
+
 # This fork has no tags so we're gonna use the commit hash as the version
 
 # Don't mangle shebangs
