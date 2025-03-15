@@ -1,5 +1,5 @@
 %global commit 
-%global shortcommit %(c=%{commit}; echo ${c:0:7})
+
 %global commit_date 20250315
 %if 0%{?fedora} == 41
 %ifarch %ix86

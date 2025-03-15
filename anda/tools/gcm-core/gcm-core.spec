@@ -7,7 +7,7 @@
 
 Name:           gcm-core
 Version:        
-%forgemeta
+
 Release:        1%?dist
 Summary:        Secure, cross-platform Git credential storage
 
