@@ -5,7 +5,7 @@
 
 
 
-%endif
+
 
 # While there's an upstream version at Supreeeme/extest, we're using
 # the same fork as Bazzite so we can use the same patches.
