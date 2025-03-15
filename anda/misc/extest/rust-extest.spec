@@ -1,6 +1,6 @@
 %global commit 
 
-%global commit_date 20250315
+
 %if 0%{?fedora} == 41
 %ifarch %ix86
 %global debug_package %{nil}
