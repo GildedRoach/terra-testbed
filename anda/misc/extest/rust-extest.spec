@@ -1,7 +1,7 @@
 %global commit 
 
 
-%if 0%{?fedora} == 41
+
 %ifarch %ix86
 %global debug_package %{nil}
 %endif
