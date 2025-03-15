@@ -2,7 +2,7 @@
 
 
 
-%ifarch %ix86
+
 %global debug_package %{nil}
 %endif
 %endif
