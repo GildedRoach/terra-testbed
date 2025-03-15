@@ -3,7 +3,7 @@
 
 
 
-%global debug_package %{nil}
+
 %endif
 %endif
 
