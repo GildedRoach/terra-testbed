@@ -15,18 +15,21 @@ jobs:
       image: quay.io/almalinuxorg/almalinux:${{ matrix.version }}-kitten
       options: --cap-add=SYS_ADMIN --privileged
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: el${{ matrix.version }}
-          fetch-depth: 1
 
       - name: Install repositories
         run: |
           dnf install -y 'dnf-command(config-manager)'
           dnf config-manager --set-enabled crb
           dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-${{ matrix.version }}.noarch.rpm
-          dnf install -y mock wget git-core openssl-devel cargo podman fuse-overlayfs rpm-build mock
-          dnf builddep -y anda/{terra/{mock-configs,srpm-macros},tools/buildsys/subatomic}/*.spec
+          dnf install -y mock wget git-core openssl-devel cargo podman fuse-overlayfs rpm-build mock gzip
+
+      - uses: actions/checkout@v4
+        with:
+          ref: el${{ matrix.version }}
+          fetch-depth: 1
+
+      - name: Install dependencies
+        run: dnf builddep -y anda/{terra/{mock-configs,srpm-macros},tools/buildsys/subatomic}/*.spec
 
       - name: Install Anda
         run: cargo install anda
