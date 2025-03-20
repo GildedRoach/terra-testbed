@@ -69,8 +69,8 @@ jobs:
           dnf builddep -y ${dir}/*.spec
           
       - name: Include custom build template instead of package default
-      run: |
-        cp -v mock-configs/terra-el-dev.tpl /etc/mock/templates/
+        run: |
+         cp -v mock-configs/terra-el-dev.tpl /etc/mock/templates/
 
       - name: Build with Andaman
         run: anda build ${{ matrix.pkg.pkg }} -c terra-el${{ matrix.version }}-dev-${{ matrix.pkg.arch }} ${{ !matrix.pkg.labels.mock == '1' && '-rrpmbuild' || '' }}
