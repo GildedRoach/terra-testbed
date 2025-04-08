@@ -27,11 +27,18 @@ BuildRequires:  python3-wheel
 BuildRequires:  python3-xlib
 BuildRequires:  python3-pyzstd
 BuildRequires:  cargo
+
 Requires:	python
 Requires:	python3
+%if %{?fedora} <= 41
 Requires:	python3-xlib
 Requires:	python3-filelock
+Requires:       python3-pyzstd
 
+AutoReqProv:    no
+%endif
+
+BuildArch:      x86_64
 
 %description
 %summary.
@@ -40,7 +47,11 @@ Requires:	python3-filelock
 %git_clone %url %version
 
 %build
+%if %{?fedora} <= 41
 ./configure.sh --prefix=%_prefix --use-system-pyzstd
+%else
+./configure.sh --prefix=%_prefix --use-system-pyzstd --use-system-urllib
+%endif
 %{make_build}
 
 %install
