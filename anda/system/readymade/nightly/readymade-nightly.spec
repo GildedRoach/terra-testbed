@@ -1,5 +1,5 @@
-%global commit d5599cd8cf5303d11c19e511239dc4a02066bf76
-%global commit_date 20250421
+%global commit 9d6e1dd9fd549bd5c90bf908f428a602a97d3dcf
+%global commit_date 20250422
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:           readymade-nightly
