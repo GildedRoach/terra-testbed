@@ -5,6 +5,7 @@ Version:       1.0.5
 
 
 
+
 Release:       1%?dist
 License:       BSD-2-Clause
 Summary:       Desktop environment agnostic Flathub software center.
