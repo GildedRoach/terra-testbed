@@ -4,8 +4,8 @@
 %global tag %{version}
 
 Name:           egl-wayland
-Version:        1.1.19%{!?tag:~%{date}git%{shortcommit}}
-Release:        2%{?dist}
+Version:        1.1.19
+Release:        1%?dist
 Summary:        EGLStream-based Wayland external platform
 License:        MIT
 URL:            https://github.com/NVIDIA/%{name}
