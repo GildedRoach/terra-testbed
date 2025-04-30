@@ -1,6 +1,6 @@
-%global commit c96126c
+%global commit 07583de
 %global shortcommit %{sub %commit 1 7}
-%global commit_date 20250420
+%global commit_date 20250430
 
 Name:			astal
 Version:		0^%commit_date.%shortcommit
