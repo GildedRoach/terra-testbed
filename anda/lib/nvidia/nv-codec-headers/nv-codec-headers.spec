@@ -1,5 +1,5 @@
 Name:           nv-codec-headers
-Version:        n13.0.19.0
+Version:        13.0.19.0
 Release:        1%?dist
 Summary:        FFmpeg version of Nvidia Codec SDK headers
 License:        MIT
