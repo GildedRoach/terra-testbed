@@ -4,7 +4,7 @@
 
 Name:           gstreamer1-plugins-bad
 Version:        1.26.1
-Release:        2%{?dist}
+Release:        1%?dist
 Epoch:          1
 Summary:        GStreamer streaming media framework "bad" plugins
 License:        LGPL-2.0-or-later and LGPL-2.0-only
