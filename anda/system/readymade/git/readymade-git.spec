@@ -1,4 +1,4 @@
-%global commit 8891605847b2ce7407947fd6f529b848835c44e6
+%global commit 6cb25e1d10aef7f7a4d4b6f7851cfe54635d31c9
 %global commit_date 20250507
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
