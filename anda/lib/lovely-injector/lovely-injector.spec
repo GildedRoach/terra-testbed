@@ -12,7 +12,7 @@
 # I'm going to git clone the repo to prepare for 0.8
 
 Name:           lovely-injector
-Version:        0.7.1
+Version:        0.8.0
 Release:        1%?dist
 Summary:        A runtime lua injector for games built with LÖVE
 
