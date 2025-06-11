@@ -1,6 +1,6 @@
 Name:           readymade
-Version:        0.12.2
-Release:        2%?dist
+Version:        0.12.3
+Release:        1%?dist
 Summary:        Install ready-made distribution images!
 License:        GPL-3.0-or-later
 URL:            https://github.com/FyraLabs/readymade
