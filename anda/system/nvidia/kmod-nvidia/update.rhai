@@ -16,7 +16,7 @@ let kver = find_all(`kernel-([\d.]+.*?)\.el.*?\.x86_64\.rpm`, get(`https://repo.
 kver.dedup();
 open_file("anda/system/nvidia/kmod-nvidia/VERSION_kernel.txt", "w").write(`${kver[kver.len - 1][1]}`);
 
-let dir = sub(`/[^/]+`, "", __script_path);
+let dir = sub(`/[^/]+$`, "", __script_path);
 if sh("[[ `git status " + dir + " --porcelain` ]] && exit 1 || exit 0", #{}).ctx.rc == 1 {
     let rel = spec::get_release(rpm).parse_int();
     rpm.release(rel + 1);
