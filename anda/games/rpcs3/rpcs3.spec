@@ -6,8 +6,8 @@
 # Need to get rid of everything Clang can't use and undefine -Wunused-command-line-argument where possible due to the project's build flags
 %global build_cflags %(echo %{build_cflags} | sed 's:-Werror ::g' | sed 's:-Wunused-command-line-argument ::g' | sed 's:-specs=/usr/lib/rpm/redhat/redhat-annobin-cc1 ::g' | sed 's:-specs=/usr/lib/rpm/redhat/redhat-hardened-ld ::g' | sed 's:-specs=/usr/lib/rpm/redhat/redhat-hardened-ld-errors ::g' | sed 's:-specs=/usr/lib/rpm/redhat/redhat-package-notes ::g') -Wno-unused-command-line-argument
 %global build_cxxflags %(echo %{build_cxxflags} | sed 's:-Werror ::g' | sed 's:-Wunused-command-line-argument ::g' | sed 's:-specs\=/usr/lib/rpm/redhat/redhat-annobin-cc1 ::g' | sed 's:-specs=/usr/lib/rpm/redhat/redhat-hardened-ld ::g' | sed 's:-specs=/usr/lib/rpm/redhat/redhat-hardened-ld-errors ::g' | sed 's:-specs=/usr/lib/rpm/redhat/redhat-package-notes ::g') -Wno-unused-command-line-argument
-%global commit 4fd581b812abf1507bca92845b39e47e9e6d298a
-%global ver 0.0.37-18016
+%global commit 6f37be1afdadd3a947b96af73930f2a7fa5bf318
+%global ver 0.0.37-18017
 
 Name:           rpcs3
 Version:        %(echo %{ver} | sed 's/-/^/g')
