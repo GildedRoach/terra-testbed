@@ -1,5 +1,5 @@
 Name:           scenefx
-Version:        0.4.1
+Version:        0.4
 Release:        1%?dist
 
 Summary:        A drop-in replacement for the wlroots scene API that allows wayland compositors to render surfaces with eye-candy effects
