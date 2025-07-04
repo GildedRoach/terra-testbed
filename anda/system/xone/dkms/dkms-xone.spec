@@ -1,6 +1,6 @@
-%global commit d515051df59f2414cd6d7c91594d2cab7247962e
+%global commit 2857eb7effeaeb8240f7587e2728990b37b7db52
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commitdate 20250703
+%global commitdate 20250704
 %global ver 0.3.4
 %global debug_package %{nil}
 %global modulename xone
