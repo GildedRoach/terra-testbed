@@ -1,5 +1,5 @@
 Name:           umu-launcher
-Version:        1.2.8
+Version:        1.2.9
 Release:        1%?dist
 Summary:        A tool for launching non-steam games with proton
 
