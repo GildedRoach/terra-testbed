@@ -5,7 +5,7 @@
 %global crate mise
 
 Name:           rust-mise
-Version:        2025.7.23
+Version:        2025.7.24
 Release:        1%?dist
 Summary:        Front-end to your dev env
 
