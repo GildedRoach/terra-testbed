@@ -1,4 +1,4 @@
-%global commit f24a7d437f1d51eca9983cebbb2c43ae0140509e
+%global commit 3faca3a192a823e3f6183e4aee4ca827c6d973ba
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 %global commit_date 20250725
 %if 0%{?fedora} == 41
