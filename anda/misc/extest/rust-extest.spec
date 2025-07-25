@@ -1,6 +1,6 @@
-%global commit 115e76eda664ddd0386730cdb34c087e6c734c41
+%global commit d6863d970d2686dd6282142af57503e1f2d561dc
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20250717
+%global commit_date 20250725
 %if 0%{?fedora} == 41
 %ifarch %ix86
 %global debug_package %{nil}
