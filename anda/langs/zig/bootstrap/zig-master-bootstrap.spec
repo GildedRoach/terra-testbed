@@ -7,7 +7,7 @@
 %define         llvm_compat 20
 %endif
 %global         llvm_version 20.0.0
-%global         ver 0.15.0-dev.1232+869ef0060
+%global         ver 0.15.0-dev.1254+c9ce1debe
 %bcond bootstrap 1
 %bcond docs      %{without bootstrap}
 %bcond test      1
@@ -36,7 +36,7 @@
 %global zig_install_options %zig_build_options %{shrink: \
     --prefix "%{_prefix}" \
 }
-%global mirror_url https://pkg.machengine.org/zig
+%global mirror_url https://zig.squirl.dev
 
 Name:           zig-master-bootstrap
 Version:        %(echo %{ver} | sed 's/-/~/g')
