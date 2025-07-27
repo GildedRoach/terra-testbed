@@ -11,10 +11,10 @@
 %bcond docs      %{without bootstrap}
 %bcond test      1
 %global zig_cache_dir %{builddir}/zig-cache
-%global mirror_url https://pkg.machengine.org/zig
+%global mirror_url https://zig.squirl.dev
 
 Name:           zig-master
-Version:        0.15.0~dev.1232+869ef0060
+Version:        0.15.0~dev.1254+c9ce1debe
 Release:        1%?dist
 Summary:        Master builds of the Zig language
 License:        MIT AND NCSA AND LGPL-2.1-or-later AND LGPL-2.1-or-later WITH GCC-exception-2.0 AND GPL-2.0-or-later AND GPL-2.0-or-later WITH GCC-exception-2.0 AND BSD-3-Clause AND Inner-Net-2.0 AND ISC AND LicenseRef-Fedora-Public-Domain AND GFDL-1.1-or-later AND ZPL-2.1
