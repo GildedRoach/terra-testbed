@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version=0.15.0-dev.1232+869ef0060
+version=0.15.0-dev.1254+c9ce1debe
 
 # Self explanatory
 function randomize_mirrors() {
