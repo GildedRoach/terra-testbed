@@ -1,4 +1,4 @@
-%define sdk_version 2.1.1
+%define sdk_version 2.2.0
 Name:           picotool
 Version:        2.2.0
 Release:        1%?dist
