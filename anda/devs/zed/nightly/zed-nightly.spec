@@ -1,7 +1,7 @@
-%global commit a884e861e98a7f9d05e344e1866d7cb144ce77dd
+%global commit bd1c26cb5b28e91b3b6c9420afe0cbb6219e16a2
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20250806
-%global ver 0.199.0
+%global commit_date 20250807
+%global ver 0.200.0
 
 %bcond_with check
 %bcond nightly 1
