@@ -1,5 +1,5 @@
 project pkg {
     rpm {
-        spec = "walker.spec"
+        spec = "flashprog.spec"
     }
 }

@@ -1,6 +1,6 @@
 # https://github.com/arduino/arduino-cli
 %global goipath github.com/arduino/arduino-cli
-Version:        1.2.0
+Version:        1.3.1
 
 %gometa -f
 
@@ -27,7 +27,6 @@ BuildRequires:  anda-srpm-macros
 
 %prep
 %goprep
-%go_prep_online
 
 %build
 %define gomodulesmode GO111MODULE=on
