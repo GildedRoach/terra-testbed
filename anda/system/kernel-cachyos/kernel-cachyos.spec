@@ -115,7 +115,7 @@ BuildRequires:  gcc-c++
 
 # Indexes 0-9 are reserved for the kernel. 10-19 will be reserved for NVIDIA
 Source0:        https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-%{_tarkver}.tar.xz
-Source1:        https://raw.githubusercontent.com/CachyOS/linux-cachyos/master/linux-cachyos/config
+Source1:        config
 
 %if %{_build_minimal}
 # The default modprobed.db provided is used for linux-cachyos CI.
@@ -128,15 +128,15 @@ Source2:        https://raw.githubusercontent.com/Frogging-Family/linux-tkg/mast
 Source10:       https://github.com/NVIDIA/open-gpu-kernel-modules/archive/%{_nv_ver}/%{_nv_pkg}.tar.gz
 %endif
 
-Patch0:         %{_patch_src}/all/0001-cachyos-base-all.patch
-Patch1:         %{_patch_src}/sched/0001-bore-cachy.patch
+Patch0:         0001-cachyos-base-all.patch
+Patch1:         0001-bore-cachy.patch
 
 %if %{_build_lto}
 Patch2:         %{_patch_src}/misc/dkms-clang.patch
 %endif
 
 %if %{_build_nv}
-Patch10:        %{_patch_src}/misc/nvidia/0001-Enable-atomic-kernel-modesetting-by-default.patch
+Patch10:        0001-Enable-atomic-kernel-modesetting-by-default.patch
 %endif
 
 %description
