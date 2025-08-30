@@ -1,0 +1,50 @@
+name: Merge upstream branches
+permissions:
+  contents: write
+
+on:
+  schedule:
+    - cron:  '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  merge:
+      name: Merge upstream branches
+      runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          branch:
+            - main
+            - frawhide
+            - f42
+            - f41
+            - el10
+       
+      steps:
+          - uses: actions/checkout@v4
+            with:
+              token: ${{ secrets.WORKFLOW_TOKEN }}
+              ref: ${{ matrix.branch }}
+
+          - name: Set up upstream
+            run: |
+              git config --global user.name 'GildedRoach'
+              git config --global user.email 'rockgrub@disroot.org'
+              git config --global merge.ours.driver true
+
+              git pull --unshallow
+                               
+              git remote add upstream https://github.com/terrapkg/packages
+      
+          - name: Merge branch
+            run: |
+              branch=${{ matrix.branch }}
+              if [ "$branch" == 'main' ]; then
+                upstream=frawhide
+              else
+                upstream=$branch
+              fi
+              
+              git fetch upstream $upstream
+              git merge --no-edit upstream/$upstream
+              git push origin $branch
