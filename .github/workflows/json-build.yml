@@ -2,11 +2,33 @@ name: JSON Build
 permissions:
   contents: read
 on:
+  workflow_call:
+    inputs:
+      packages:
+        description: "Packages to Build"
+        required: true
+        type: string
+      publish:
+        description: "Whether the package should be published"
+        required: false
+        type: boolean
+        default: true
+      custom_builder:
+        description: "Custom Builder"
+        required: false
+        type: string
+        default: ""
   workflow_dispatch:
     inputs:
       packages:
         description: "Packages to Build"
         required: true
+        type: string
+      publish:
+        description: "Whether the package should be published"
+        required: false
+        type: boolean
+        default: true
 
 jobs:
   build:
@@ -15,7 +37,7 @@ jobs:
         pkg: ${{ fromJson(inputs.packages) }}
         version: ["10"]
       fail-fast: false
-    runs-on: ${{ (matrix.pkg.arch == 'aarch64' && matrix.pkg.labels['large']) && 'arm64-lg' || matrix.pkg.arch == 'aarch64' && 'ubuntu-22.04-arm' || matrix.pkg.labels['large'] && format('cirun-x86-64-lg--{0}', github.run_id) || 'ubuntu-22.04' }}
+    runs-on: ${{ inputs.custom_builder && inputs.custom_builder || (matrix.pkg.arch == 'aarch64' && matrix.pkg.labels['large']) && 'arm64-lg' || matrix.pkg.arch == 'aarch64' && 'ubuntu-22.04-arm' || matrix.pkg.labels['large'] && format('cirun-x86-64-lg--{0}', github.run_id) || 'ubuntu-22.04' }}
     container:
       image: ghcr.io/terrapkg/builder:el${{ matrix.version }}
       options: --cap-add=SYS_ADMIN --privileged
@@ -61,6 +83,7 @@ jobs:
             anda-build/rpm/srpm/*
 
       - name: Upload packages to subatomic
+        if: inputs.publish
         run: |
           subatomic-cli upload --prune \
             --server https://subatomic.fyralabs.com \
@@ -68,7 +91,7 @@ jobs:
             terrael${{ matrix.version }} anda-build/rpm/rpms/*
 
       - name: Upload source packages to subatomic
-        if: matrix.pkg.labels['no_upload_srpms'] != '1'
+        if: inputs.publish && matrix.pkg.labels['no_upload_srpms'] != '1'
         run: |
           subatomic-cli upload --prune \
             --server https://subatomic.fyralabs.com \
@@ -77,7 +100,7 @@ jobs:
 
       - name: Notify Madoguchi (Success)
         if: success()
-        run: ./.github/workflows/mg.sh true ${{matrix.pkg.pkg}} ${{matrix.version}} ${{matrix.pkg.arch}} ${{github.run_id}} ${{secrets.MADOGUCHI_JWT}} $GITHUB_SHA
+        run: ./.github/workflows/mg.sh true ${{matrix.pkg.pkg}} el${{matrix.version}} ${{matrix.pkg.arch}} ${{github.run_id}} ${{secrets.MADOGUCHI_JWT}} $GITHUB_SHA
       - name: Notify Madoguchi (Failure)
-        if: cancelled() || failure()
-        run: ./.github/workflows/mg.sh false ${{matrix.pkg.pkg}} ${{matrix.version}} ${{matrix.pkg.arch}} ${{github.run_id}} ${{secrets.MADOGUCHI_JWT}} $GITHUB_SHA
+        if: inputs.publish && (cancelled() || failure())
+        run: ./.github/workflows/mg.sh false ${{matrix.pkg.pkg}} el${{matrix.version}} ${{matrix.pkg.arch}} ${{github.run_id}} ${{secrets.MADOGUCHI_JWT}} $GITHUB_SHA
