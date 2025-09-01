@@ -8,13 +8,13 @@ on:
     paths:
       - anda/**
     branches:
-      - frawhide
+      - el10
   pull_request:
     branches:
-      - frawhide
+      - el10
   merge_group:
     branches:
-      - frawhide
+      - el10
   workflow_dispatch:
   workflow_call:
 
