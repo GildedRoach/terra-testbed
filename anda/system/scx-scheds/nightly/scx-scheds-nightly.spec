@@ -1,6 +1,6 @@
-%global commit 04196a9279f34bb093e8e379c4f30df25163e633
+%global commit dc12a8468e388f68350657fb6f26683bf588cc4e
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commitdate 20250831
+%global commitdate 20250901
 %global ver 1.0.15
 
 Name:           scx-scheds-nightly
