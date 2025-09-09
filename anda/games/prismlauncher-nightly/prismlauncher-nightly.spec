@@ -1,10 +1,10 @@
 %global real_name prismlauncher
 %global nice_name PrismLauncher
 
-%global commit 320cf0b3c26fe6b8ab2ba206e19e03402da17fe8
+%global commit 2ed5650c4fa5d48965515644311520c38c181167
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
-%global commit_date 20250905
+%global commit_date 20250909
 %global snapshot_info %{commit_date}.%{shortcommit}
 
 %bcond_without qt6
