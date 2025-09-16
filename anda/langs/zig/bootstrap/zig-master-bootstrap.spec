@@ -7,7 +7,7 @@
 %define         llvm_compat 20
 %endif
 %global         llvm_version 20.0.0
-%global         ver 0.16.0-dev.234+32a1aabff
+%global         ver 0.16.0-dev.235+377a8b2a3
 %bcond bootstrap 1
 %bcond docs      %{without bootstrap}
 %bcond test      1
