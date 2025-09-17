@@ -1,5 +1,5 @@
-%global commit eced36223a7683dec87af0f6496a5c01ff757bab
-%global commit_date 20250610
+%global commit 9621ae11165ad4de4a3d9edd722bb32d0233ebed
+%global commit_date 20250908
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:           readymade-git
@@ -63,3 +63,4 @@ ln -sf %{_datadir}/applications/com.fyralabs.Readymade.desktop %{buildroot}%{_da
 %_datadir/applications/liveinst.desktop
 %ghost %_datadir/readymade
 %_datadir/icons/hicolor/scalable/apps/com.fyralabs.Readymade.svg
+
