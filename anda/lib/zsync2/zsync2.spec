@@ -1,8 +1,8 @@
-%global git_commit 5b0eac782ba0771c4fe1fcdaa39e36a9716a06d9
+%global git_commit fc62ae7851ef28dc390a57fbdbe90b0afc5e3102
 
 %global commit_short %(c=%{git_commit}; echo ${c:0:7})
 
-%global ver     2.0.0-alpha-1-20250925
+%global ver     2.0.0-alpha-1-20250926
 %global libver  %ver.git%{commit_short}
 
 # replace - with ~
