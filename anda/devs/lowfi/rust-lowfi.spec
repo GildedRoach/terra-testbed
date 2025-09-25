@@ -2,7 +2,7 @@
 %global crate lowfi
 
 Name:           rust-lowfi
-Version:        1.7.0
+Version:        1.7.1
 Release:        1%?dist
 Summary:        Extremely simple lofi player
 
