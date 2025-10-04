@@ -1,5 +1,5 @@
-%global commit 81f0364d15c51971494af84a8a971e679662de24
-%global commit_date 20250924
+%global commit bb8cfa0ec76c703faac1f47743206cc5e267d16d
+%global commit_date 20251004
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:           readymade-git
