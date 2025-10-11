@@ -1,6 +1,6 @@
-%global commit 41220bcd20d3a026d76e32019440ccc05fb8464e
+%global commit 774890f017eaa000df0647965a627f8738dcea71
 %global shortcommit %{sub %{commit} 1 7}
-%global commit_date 20251010
+%global commit_date 20251011
 %global debug_package %{nil}
 %global modulename intel-usbio
 

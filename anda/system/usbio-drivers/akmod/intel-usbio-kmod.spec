@@ -1,8 +1,8 @@
 %global buildforkernels akmod
 %global debug_package %{nil}
-%global commit 41220bcd20d3a026d76e32019440ccc05fb8464e
+%global commit 774890f017eaa000df0647965a627f8738dcea71
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20251010
+%global commit_date 20251011
 %global modulename intel-usbio
 
 Name:           %{modulename}-kmod
