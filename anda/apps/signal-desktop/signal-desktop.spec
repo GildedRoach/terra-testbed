@@ -12,7 +12,7 @@
 %endif
 
 Name:			signal-desktop	
-Version:			7.75.0
+Version:			7.75.1
 Release:			1%?dist
 Summary:		A private messenger for Windows, macOS, and Linux
 URL:			https://signal.org
