@@ -1,3 +1,4 @@
+%define _distro_extra_cflags -Wno-incompatible-pointer-types
 %global _lto_cflags %{nil}
 
 %global avcodec_soversion 61
@@ -11,8 +12,8 @@
 
 Summary:        A complete solution to record, convert and stream audio and video
 Name:           ffmpeg
-Version:        7.1.1
-Release:        16%?dist
+Version:        7.1.2
+Release:        1%?dist
 License:        LGPLv3+
 URL:            http://%{name}.org/
 Epoch:          1
