@@ -1,7 +1,7 @@
-import "andax/nvidia.rhai" as nvidia;
+import "andax/bump_extras.rhai" as bump;
 import "andax/spec.rhai" as spec;
 
-let v = nvidia::nvidia_driver_version();
+let v = bump::madoguchi("nvidia-driver", labels.branch);
 let m = gh("NVIDIA/open-gpu-kernel-modules");
 if m == v {
     rpm.version(v);
