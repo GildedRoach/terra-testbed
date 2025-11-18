@@ -3,10 +3,10 @@
 %global name_pretty %{quote:Prism Launcher (Nightly)}
 %global appid org.prismlauncher.PrismLauncher-nightly
 
-%global commit 8b4ad7aa49be5bff1473b9242a759945473a3c3b
+%global commit 4c437a839cb66e59a6dc63d759bd412e6d9e31e3
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
-%global commit_date 20251117
+%global commit_date 20251118
 %global snapshot_info %{commit_date}.%{shortcommit}
 
 %bcond_without qt6
