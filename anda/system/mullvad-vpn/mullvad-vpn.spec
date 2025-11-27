@@ -1,5 +1,5 @@
 Name:          mullvad-vpn
-Version:       2025.7
+Version:       2025.13
 Release:       1%{?dist}
 Summary:       The Mullvad VPN client app for desktop
 SourceLicense: GPL-3.0-only
