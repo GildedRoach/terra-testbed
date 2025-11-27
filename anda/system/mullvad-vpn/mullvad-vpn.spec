@@ -15,9 +15,10 @@ BuildRequires: golang >= 1.21
 BuildRequires: libxcrypt-compat
 BuildRequires: mold
 BuildRequires: nodejs-packaging
+BuildRequires: pkgconfig(libnftnl)
 BuildRequires: protobuf-devel
 BuildRequires: systemd-rpm-macros
-BuildRequires: pkgconfig(libnftnl)
+BuildRequires: typescript
 Requires:      dbus-libs
 Requires:      libnotify
 Requires:      libXScrnSaver
