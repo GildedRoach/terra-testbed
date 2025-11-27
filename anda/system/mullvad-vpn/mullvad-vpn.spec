@@ -99,8 +99,8 @@ rm -f /var/cache/mullvad-vpn/api-ip-address.txt
 %systemd_preun mullvad-early-boot-blocking.service
 
 # Internal daemon handling.
-%{_datadir}/%{name}/resources/mullvad-setup reset-firewall || :
-%{_datadir}/%{name}/resources/mullvad-setup remove-device || :
+%{_libdir}/%{name}/resources/mullvad-setup reset-firewall || :
+%{_libdir}/%{name}/resources/mullvad-setup remove-device || :
 
 %postun
 %systemd_postun_with_restart mullvad-daemon.service
