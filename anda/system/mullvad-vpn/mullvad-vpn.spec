@@ -14,6 +14,7 @@ BuildRequires: dbus-devel
 BuildRequires: golang >= 1.21
 BuildRequires: libxcrypt-compat
 BuildRequires: mold
+BuildRequires: nodejs-packaging
 BuildRequires: protobuf-devel
 BuildRequires: systemd-rpm-macros
 BuildRequires: pkgconfig(libnftnl)
