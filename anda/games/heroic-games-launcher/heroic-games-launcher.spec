@@ -38,6 +38,7 @@ Heroic is a Free and Open Source Epic, GOG, and Amazon Prime Games launcher for 
 %git_clone https://github.com/%{org_name}/%{git_name} v%{version}
 
 %build
+%{__pnpm} install
 %{__pnpm} run download-helper-binaries
 %{__pnpm} electron-vite build
 %{__pnpm} electron-builder --linux --%{_electron_cpu} --publish=never
