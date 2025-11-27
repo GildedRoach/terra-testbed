@@ -77,7 +77,7 @@ popd
 
 %electron_install -D
 # Extra symlink
-ln -sf %{_datadir}/%{name}/resources/mullvad-problem-report %{buildroot}%{_bindir}/mullvad-problem-report
+ln -sf %{_libdir}/%{name}/resources/mullvad-problem-report %{buildroot}%{_bindir}/mullvad-problem-report
 
 %{cargo_license_online} > LICENSE.dependencies
 
