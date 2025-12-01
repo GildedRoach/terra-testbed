@@ -3,7 +3,7 @@
 %global org "com.github.luisbocanegra"
 
 Name:           kde-material-you-colors
-Version:        1.10.1
+Version:        2.0.0
 Release:        1%?dist
 Summary:        Automatic Material You Colors Generator from your wallpaper for the Plasma Desktop
 License:        GPL-3.0-only
