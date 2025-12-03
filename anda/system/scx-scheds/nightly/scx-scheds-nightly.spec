@@ -1,7 +1,7 @@
-%global commit ff182ec9019d7ca987bfb4c3eb8f785e172f8278
+%global commit 6b742c524a3ae033ad65462c373142b8ca2222ce
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commitdate 20251202
-%global ver 1.0.18
+%global commitdate 20251203
+%global ver 1.0.19
 %undefine __brp_mangle_shebangs
 
 Name:           scx-scheds-nightly
