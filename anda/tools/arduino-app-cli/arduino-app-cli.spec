@@ -1,5 +1,5 @@
 %global goipath github.com/arduino/arduino-app-cli
-Version:        0.6.7
+Version:        0.7.0
 
 %gometa -f
 
