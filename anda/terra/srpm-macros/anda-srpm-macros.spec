@@ -1,6 +1,6 @@
 Name:           anda-srpm-macros
-Version:        0.2.21
-Release:        2%?dist
+Version:        0.2.22
+Release:        1%?dist
 Summary:        SRPM macros for extra Fedora packages
 
 License:        MIT
