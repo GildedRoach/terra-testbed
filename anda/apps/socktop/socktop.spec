@@ -1,4 +1,4 @@
-%global ver 1.55.0-test2
+%global ver v1.55.0-test2
 %global sanitized_ver %(echo %{ver} | sed 's/-//g')
 
 Name:           socktop
