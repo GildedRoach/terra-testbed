@@ -13,7 +13,7 @@
 %global build_platform terra
 
 Name:             prismlauncher
-Version:          10.0.0
+Version:          10.0.1
 Release:          1%?dist
 Summary:          Minecraft launcher with ability to manage multiple instances
 # see COPYING.md for more information
