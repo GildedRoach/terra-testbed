@@ -2,7 +2,7 @@
 %global _desc Python 3.8+ toolbox for submitting jobs to Slurm.
 
 Name:			python-%{pypi_name}
-Version:		1.2.0
+Version:		1.5.4
 Release:		1%?dist
 Summary:		Python 3.8+ toolbox for submitting jobs to Slurm
 License:		MIT
