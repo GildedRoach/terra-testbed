@@ -22,7 +22,7 @@
 Summary:        A complete solution to record, convert and stream audio and video
 Name:           ffmpeg
 Version:        7.1.2
-Release:        4%{?dist}
+Release:        5%?dist
 License:        LGPLv3+
 URL:            http://%{name}.org/
 Epoch:          1
