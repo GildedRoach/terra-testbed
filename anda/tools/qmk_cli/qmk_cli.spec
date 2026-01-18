@@ -4,8 +4,8 @@
 
 
 Name:			python-%{pypi_name}
-Version:		1.1.8
-Release:		4%?dist
+Version:		1.2.0
+Release:		1%?dist
 Summary:		A program to help users work with QMK
 License:		MIT
 URL:			https://github.com/qmk/qmk_cli
