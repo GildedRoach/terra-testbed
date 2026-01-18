@@ -24,7 +24,7 @@ jobs:
           dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-${{ matrix.version }}.noarch.rpm
           dnf install -y mock wget git-core openssl-devel cargo podman fuse-overlayfs rpm-build mock gzip
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           ref: el${{ matrix.version }}
           fetch-depth: 1
