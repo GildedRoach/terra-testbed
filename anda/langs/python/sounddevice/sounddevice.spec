@@ -2,7 +2,7 @@
 %global _desc 🔉 Play and Record Sound with Python 🐍.
 
 Name:			python-%{pypi_name}
-Version:		0.5.3
+Version:		0.5.4
 Release:		1%?dist
 Summary:		🔉 Play and Record Sound with Python 🐍
 License:		MIT
