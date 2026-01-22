@@ -2,7 +2,7 @@
 %global _desc The code of the Arduino App Lab Bricks
 
 Name:			%{pypi_name}
-Version:		release/0.6.2
+Version:		release/0.6.3
 Release:		1%?dist
 Summary:		The code of the Arduino App Lab Bricks
 License:		MPL-2.0
