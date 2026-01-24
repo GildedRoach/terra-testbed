@@ -14,11 +14,11 @@
 %define _prefix 	/usr/share/wine-staging
 %undefine _hardened_build
 
-%global srcmajor 10.x
+%global srcmajor 11.x
 
 
 Name:       wine-staging
-Version:    11.0
+Version:    11.1
 Release:    1%?dist
 Epoch:      1
 Summary:    WINE Is Not An Emulator - runs MS Windows programs
