@@ -1,8 +1,8 @@
 %global appid com.github.snow
 
 Name:           snow
-Version:        1.2.0
-Release:        3%?dist
+Version:        1.3.0
+Release:        1%?dist
 Summary:        Classic Macintosh emulator
 URL:            https://github.com/twvd/snow
 Source0:        %url/archive/refs/tags/v%version.tar.gz
