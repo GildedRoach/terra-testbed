@@ -1,5 +1,5 @@
 Name:           ScopeBuddy
-Version:        1.3.1
+Version:        1.4.0
 Release:        1%?dist
 Summary:        A manager script to make gamescope easier to use on desktop
 License:        Apache-2.0
