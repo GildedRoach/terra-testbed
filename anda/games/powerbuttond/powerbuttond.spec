@@ -1,7 +1,7 @@
 %define debug_package %nil
 
 Name:           powerbuttond
-Version:        4.0
+Version:        
 Release:        1%?dist
 Summary:        Steam Deck power button daemon
 
