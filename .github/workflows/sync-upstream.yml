@@ -1,0 +1,50 @@
+name: Merge upstream branches
+permissions:
+  contents: write
+
+on:
+  schedule:
+    - cron:  '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  merge:
+      name: Merge upstream branches
+      runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          branch:
+            - main
+            - frawhide
+            - f43
+            - f42
+            - el10
+       
+      steps:
+          - uses: actions/checkout@v6
+            with:
+              fetch-depth: 0
+              token: ${{ secrets.WORKFLOW_TOKEN }}
+              ref: ${{ matrix.branch }}
+
+          - name: Set up upstream
+            run: |
+              git config user.name "github-actions[bot]"
+              git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git config --global merge.ours.driver true
+              git remote add upstream https://github.com/terrapkg/packages
+      
+          - name: Merge branch 
+            env:
+              GITHUB_TOKEN: ${{ github.token }}
+            run: |
+              branch=${{ matrix.branch }}
+              if [ "$branch" == 'main' ]; then
+                upstream=frawhide
+              else
+                upstream=$branch
+              fi
+              
+              git fetch upstream $upstream
+              git merge --no-edit upstream/$upstream
+              git push origin $branch
