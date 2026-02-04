@@ -5,7 +5,7 @@
 %global debug_package %{nil}
 %endif
 
-%global ver 0.222.1-pre
+%global ver 0.222.2
 # Exclude input files from mangling
 %global __brp_mangle_shebangs_exclude_from ^/usr/src/.*$
 
