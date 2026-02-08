@@ -3,7 +3,7 @@
 %define appid jp.veracrypt.veracrypt
 
 Name:           veracrypt
-Version:        1.26.24
+Version:        VeraCrypt_1.26.24
 Release:        1%?dist
 Summary:        Disk encryption with strong security based on TrueCrypt
 URL:            https://veracrypt.jp/en/Home.html
