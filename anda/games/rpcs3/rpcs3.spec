@@ -2,7 +2,7 @@
 %global toolchain clang
 # Define which LLVM/Clang version RPCS3 needs
 %if 0%{?fedora} >= 45
-%global llvm_major 21
+%global llvm_major 20
 %global __cc clang-%{llvm_major}
 %global __cxx clang++-%{llvm_major}
 %endif
