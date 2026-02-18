@@ -4,6 +4,5 @@ project pkg {
 	}
     labels {
 		mock = 1
-		large = 1
     }
 }
