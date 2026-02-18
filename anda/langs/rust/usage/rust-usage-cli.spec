@@ -4,7 +4,7 @@
 %global crate usage-cli
 
 Name:           rust-usage-cli
-Version:        2.17.1
+Version:        2.17.3
 Release:        1%?dist
 Summary:        CLI for working with usage-based CLIs
 
