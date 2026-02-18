@@ -1,0 +1,8 @@
+--- a/rpcs3/util/atomic.cpp	2026-02-18 05:41:34.061668386 -0600
++++ b/rpcs3/util/atomic.cpp	2026-02-18 05:45:27.804070540 -0600
+@@ -1,4 +1,5 @@
+ #include "atomic.hpp"
++#include "limits.h"
+ 
+ #if defined(__linux__) || defined(__APPLE__)
+ #define USE_FUTEX
