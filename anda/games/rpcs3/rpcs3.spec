@@ -10,7 +10,7 @@
 %global build_cflags %(echo "%{__build_flags_lang_c}" | sed 's|-Wp,-D_GLIBCXX_ASSERTIONS ||g') %{?_distro_extra_cflags}
 %global build_cxxflags %(echo "%{__build_flags_lang_cxx}" | sed 's|-Wp,-D_GLIBCXX_ASSERTIONS ||g') %{?_distro_extra_cflags}
 %global commit b30a44c1367635af0675f61504e1ca45263655c6
-%global ver 0.0.39-18702
+%global ver 0.0.39-18794
 
 Name:           rpcs3
 Version:        %(echo %{ver} | sed 's/-/^/g')
