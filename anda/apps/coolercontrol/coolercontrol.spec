@@ -9,7 +9,7 @@ for background device management, as well as a GUI to expertly customize your se
 
 Name:           coolercontrol
 Version:        3.1.1
-Release:        1%?dist
+Release:        2%?dist
 Summary:        Cooling device control for Linux
 License:        GPL-3.0-or-later
 URL:            https://gitlab.com/coolercontrol/coolercontrol
@@ -32,7 +32,6 @@ BuildRequires:  cmake(Qt6WebEngineWidgets)
 
 %package -n coolercontrold
 Summary:        Monitor and control your cooling devices.
-Requires:       coolercontrol-liqctld
 BuildRequires:  pkgconfig(webkit2gtk-4.1) pkgconfig(openssl) pkgconfig(librsvg-2.0)
 BuildRequires:  libappindicator-gtk3-devel
 %description -n coolercontrold %_desc
