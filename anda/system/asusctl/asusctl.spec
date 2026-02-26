@@ -4,7 +4,7 @@
 %define _unpackaged_files_terminate_build 0
 
 Name:           asusctl
-Version:        6.3.3
+Version:        6.3.4
 Release:        1%?dist
 Epoch:          1
 Summary:        A control daemon, CLI tools, and a collection of crates for interacting with ASUS ROG laptops
