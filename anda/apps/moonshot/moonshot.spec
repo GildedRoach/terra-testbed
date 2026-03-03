@@ -2,7 +2,7 @@
 %define appid com.fyralabs.moonshot
 
 Name:           moonshot
-Version:        1.0.1
+Version:        1.0.2
 Release:        1%?dist
 Summary:        A beautiful cross-platform flashing tool
 License:        GPL-3.0-or-later
