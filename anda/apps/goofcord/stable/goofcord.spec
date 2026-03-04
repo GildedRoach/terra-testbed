@@ -2,8 +2,8 @@
 %global appid io.github.milkshiift.GoofCord
 
 Name:          goofcord
-Version:       2.0.1
-Release:       2%{?dist}
+Version:       2.1.0
+Release:       1%?dist
 License:       OSL-3.0
 Summary:       A privacy-minded Legcord fork.
 Group:         Applications/Internet
