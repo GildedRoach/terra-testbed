@@ -1,7 +1,7 @@
-%global commit 45f3fcfa70d482ae1ac94ec9a2e78f3d941a37e5
+%global commit 5be00d22d09f118fa5a2ac40deb12c54f66f03b8
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20260304
-%global ver 2.0.1^
+%global commit_date 20260305
+%global ver 2.1.0^
 %global base_name goofcord
 %global git_name GoofCord
 %global appid io.github.milkshiift.GoofCord
