@@ -1,5 +1,5 @@
-%global commit 3adce3c9b5a31e37c7f340afdcf2629859faa9c2
-%global commit_date 20260305
+%global commit d1a4fd2401a0bf87a143f0426d088a02969fc1fe
+%global commit_date 20260308
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 %global debug_package %nil
 %global __strip /bin/true
@@ -12,7 +12,7 @@
 
 Name:           legcord-nightly
 Version:        %commit_date.%shortcommit
-Release:        1%?dist
+Release:        1%{?dist}
 License:        OSL-3.0
 Summary:        Custom lightweight Discord client designed to enhance your experience
 URL:            https://github.com/Legcord/Legcord
