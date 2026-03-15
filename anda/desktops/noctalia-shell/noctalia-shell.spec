@@ -43,7 +43,7 @@ cp -r ./* %{buildroot}/etc/xdg/quickshell/noctalia-shell/
 %{_sysconfdir}/xdg/quickshell/noctalia-shell/
 
 %changelog
-* Mon Mar 09 2026 Willow C Reed <willow@willowidk.dev>
+* Mon Mar 09 2026 Willow C Reed <terra@willowidk.dev>
 - switch gpu-screen-recorder to be recommended as it's a plugin and not required anymore. also switched source to be based on version.
 
 * Fri Feb 27 2026 Willow C Reed <terra@willowidk.dev>
