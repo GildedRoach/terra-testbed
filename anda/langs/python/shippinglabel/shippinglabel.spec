@@ -1,18 +1,18 @@
-%global pypi_name gay
-%global _desc Colour your text / terminal to be more gay.
+%global pypi_name shippinglabel
+%global _desc Utilities for handling packages.
 
 Name:			python-%{pypi_name}
-Version:		1.3.4
-Release:		2%?dist
-Summary:		Colour your text / terminal to be more gay
+Version:		2.3.0
+Release:		1%?dist
+Summary:		Utilities for handling packages
 License:		MIT
-URL:			https://github.com/ms-jpq/gay
+URL:			https://shippinglabel.readthedocs.io/en/latest/
 Source0:		%{pypi_source}
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-pip
+BuildRequires:  python3-hatch-requirements-txt
 
 Packager:	    Owen Zimmerman <owen@fyralabs.com>
 
@@ -34,13 +34,12 @@ Summary:        %{summary}
 
 %install
 %pyproject_install
+%pyproject_save_files shippinglabel
 
-%files -n python3-%{pypi_name}
-%doc README.md
+%files -n python3-%{pypi_name} -f %{pyproject_files}
+%doc README.rst
 %license LICENSE
-%{_bindir}/gay
-%python3_sitelib/gay-%{version}.dist-info/*
 
 %changelog
-* Tue Sep 30 2025 Owen Zimmerman <owen@fyralabs.com>
+* Sat Mar 14 2026 Owen Zimmerman <owen@fyralabs.com>
 - Initial commit

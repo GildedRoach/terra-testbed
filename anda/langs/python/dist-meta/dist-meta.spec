@@ -1,19 +1,18 @@
-%global pypi_name spake2
-%global _desc pure-python implementation of the SPAKE2 Password-Authenticated Key Exchange algorithm.
+%global pypi_name dist-meta
+%global _desc Parse and create Python distribution metadata.
 
 Name:			python-%{pypi_name}
-Version:		0.9
+Version:		0.9.0
 Release:		1%?dist
-Summary:		pure-python implementation of the SPAKE2 Password-Authenticated Key Exchange algorithm
+Summary:		Parse and create Python distribution metadata
 License:		MIT
-URL:			https://github.com/warner/python-spake2
-Source0:		%{pypi_source}
+URL:			https://dist-meta.readthedocs.io/en/latest/
+Source0:		https://github.com/repo-helper/dist-meta/archive/refs/tags/v%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
-BuildRequires:  python3-wheel
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-pip
+BuildRequires:  python3-hatch-requirements-txt
 
 Packager:	    Owen Zimmerman <owen@fyralabs.com>
 
@@ -28,19 +27,19 @@ Summary:        %{summary}
 %_desc
 
 %prep
-%autosetup -n spake2-%{version}
+%autosetup -n %{pypi_name}-%{version}
 
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
-%pyproject_save_files spake2
+%pyproject_save_files dist_meta
 
 %files -n python3-%{pypi_name} -f %{pyproject_files}
-%doc README.md
+%doc README.rst
 %license LICENSE
 
 %changelog
-* Mon Nov 03 2025 Owen Zimmerman <owen@fyralabs.com>
+* Sat Mar 14 2026 Owen Zimmerman <owen@fyralabs.com>
 - Initial commit
