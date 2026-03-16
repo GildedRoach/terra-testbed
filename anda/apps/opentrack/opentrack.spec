@@ -3,7 +3,7 @@
 %global appid com.github.opentrack
 
 Name:           opentrack
-Version:        2026.1.0
+Version:        opentrack.2026.1.0
 Release:        1%{?dist}
 Summary:        Head tracking software for MS Windows, Linux, and Apple OSX
 
