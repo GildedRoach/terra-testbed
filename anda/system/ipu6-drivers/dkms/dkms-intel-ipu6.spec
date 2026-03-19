@@ -1,7 +1,7 @@
 %global debug_package %{nil}
-%global commit da921f79f673d816b99c1f974dfc895e8ede3f64
+%global commit 9323d2e45e8423321d90d7b3832fbfaf398a159a
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20260303
+%global commit_date 20260319
 %global modulename intel-ipu6
 # Actual "release" version, currently unused as the release versions are back and forth on if on if they use 1.0.0 or 1.0.1
 %global ver 1.0.1
