@@ -1,4 +1,4 @@
-%global commit d9412bf01f3ffbe55e15f34445fe4c682fde5ede
+%global commit 88087a086ab732211c466b41f5d64229ce51c050
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 %global commit_date 20260314
 
@@ -10,6 +10,7 @@ License:        GPL-3.0-only
 URL:            https://github.com/OpenGamingCollective/gamescope-session-opengamepadui
 Source0:        %url/archive/%commit.tar.gz
 Packager:       Tulip Blossom <tulilirockz@outlook.com>
+Requires:       gamescope-session
 Requires:       opengamepadui
 BuildArch:      noarch
 
