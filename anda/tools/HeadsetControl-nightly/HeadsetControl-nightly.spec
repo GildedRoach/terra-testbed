@@ -1,6 +1,6 @@
 %global _udevrulesdir /usr/lib/udev/rules.d
 
-%global commit      7d6e61bb75bdcd3a439e6c06d5133d660c8f030c
+%global commit      02ec4517e4bb5283c116426ccff2b54b203692f1
 %global commitdate  20251121
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
