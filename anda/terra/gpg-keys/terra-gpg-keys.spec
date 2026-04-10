@@ -9,16 +9,16 @@ Requires:       filesystem >= 3.18-6
 License:        MIT
 URL:            https://terra.fyralabs.com
 # We aren't pulling keys from the origin URLs, since they shouldn't change and this is easier to audit.
-Source0:        RPM-GPG-KEY-terra\\$releasever
-Source1:        RPM-GPG-KEY-terra\\$releasever-extras
-Source2:        RPM-GPG-KEY-terra\\$releasever-extras-source
-Source3:        RPM-GPG-KEY-terra\\$releasever-mesa
-Source4:        RPM-GPG-KEY-terra\\$releasever-mesa-source
-Source5:        RPM-GPG-KEY-terra\\$releasever-multimedia
-Source6:        RPM-GPG-KEY-terra\\$releasever-multimedia-source
-Source7:        RPM-GPG-KEY-terra\\$releasever-nvidia
-Source8:        RPM-GPG-KEY-terra\\$releasever-nvidia-source
-Source9:        RPM-GPG-KEY-terra\\$releasever-source
+Source0:        RPM-GPG-KEY-terrarawhide
+Source1:        RPM-GPG-KEY-terrarawhide-extras
+Source2:        RPM-GPG-KEY-terrarawhide-extras-source
+Source3:        RPM-GPG-KEY-terrarawhide-mesa
+Source4:        RPM-GPG-KEY-terrarawhide-mesa-source
+Source5:        RPM-GPG-KEY-terrarawhide-multimedia
+Source6:        RPM-GPG-KEY-terrarawhide-multimedia-source
+Source7:        RPM-GPG-KEY-terrarawhide-nvidia
+Source8:        RPM-GPG-KEY-terrarawhide-nvidia-source
+Source9:        RPM-GPG-KEY-terrarawhide-source
 Source10:       RPM-GPG-KEY-terra42
 Source11:       RPM-GPG-KEY-terra42-extras
 Source12:       RPM-GPG-KEY-terra42-extras-source
