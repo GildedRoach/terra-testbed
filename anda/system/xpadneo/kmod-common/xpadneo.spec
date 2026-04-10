@@ -1,7 +1,7 @@
-%global commit 153b6b6a5078df6e2aa2c75c552f229e9ac9f3ef
+%global commit d8f6e10395b2fa5f036a9f5e0f62a5b910b9edd9
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commitdate 20260409
-%global ver 0.10.1
+%global commitdate 20260410
+%global ver 0.10.2
 
 Name:           xpadneo
 Version:        %{ver}^%{commitdate}git.%{shortcommit}
