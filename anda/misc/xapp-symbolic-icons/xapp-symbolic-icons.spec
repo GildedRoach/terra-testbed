@@ -1,5 +1,5 @@
 Name:           xapp-symbolic-icons
-Version:        1.0.7
+Version:        1.0.9
 Release:        1%{?dist}
 Summary:        A set of symbolic icons which replaces the GNOME-specific Adwaita set
 License:        GPL-3.0-only AND LGPL-3.0-only
