@@ -1,7 +1,7 @@
 %global modulename xpadneo
 
 Name:           dkms-%{modulename}
-Version:        0.10.2^20260411git.45f3982
+Version:        0.10.2
 Release:        1%{?dist}
 %if 0%{?fedora} <= 45
 Epoch:          1
