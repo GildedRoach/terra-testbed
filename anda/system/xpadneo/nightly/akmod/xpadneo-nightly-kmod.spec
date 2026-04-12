@@ -1,5 +1,5 @@
 %global commit 
-%global shortcommit %(c=%{commit}; echo ${c:0:7})
+
 %global commitdate 
 %global ver 0.10.2
 %define buildforkernels akmod
