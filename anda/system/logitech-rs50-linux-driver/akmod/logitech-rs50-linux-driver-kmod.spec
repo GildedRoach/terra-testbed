@@ -7,14 +7,14 @@
 %global debug_package %{nil}
 %endif
 
-%global commit 34eb21e66a687ea8961f185ecd54bc7e7edae0f8
-%global commitdate 20260407
+%global commit 899dea0408fbbe219f6dbbf67c2e0e5b8f812d98
+%global commitdate 20260415
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 %global modulename logitech-rs50-linux-driver
 
 Name:           %{modulename}-kmod
 Version:        1.0^%{commitdate}git.%{shortcommit}
-Release:        2%{?dist}
+Release:        1%{?dist}
 Summary:        Linux kernel driver for the Logitech RS50 Direct Drive Wheel Base (USB ID 046d:c276)
 License:        GPL-2.0-only
 URL:            https://github.com/mescon/logitech-rs50-linux-driver
