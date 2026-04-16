@@ -7,8 +7,8 @@
 %global debug_package %{nil}
 %endif
 
-%global commit 899dea0408fbbe219f6dbbf67c2e0e5b8f812d98
-%global commitdate 20260415
+%global commit 1c75a5b626b450a73b21fad1bb59421c06b22e29
+%global commitdate 20260416
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 %global modulename logitech-rs50-linux-driver
 
