@@ -1,5 +1,5 @@
 Name:           snow
-Version:        1.4.0
+Version:        1.4.1
 Release:        1%{?dist}
 Summary:        Classic Macintosh emulator
 URL:            https://github.com/twvd/snow
