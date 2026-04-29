@@ -25,7 +25,7 @@ jobs:
       build_matrix: ${{ steps.parsing.outputs.build_matrix }}
     runs-on: ubuntu-24.04-arm
     container:
-      image: ghcr.io/terrapkg/builder:el${{ matrix.version }}
+      image: ghcr.io/terrapkg/builder:frawhide
       options: --cap-add=SYS_ADMIN --privileged
     steps:
       - name: Checkout
