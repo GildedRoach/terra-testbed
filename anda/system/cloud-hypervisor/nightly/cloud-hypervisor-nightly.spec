@@ -1,5 +1,5 @@
-%global commit 389257964b10a0968bc6c0e8ea7a5a7a853aab52
-%global commit_date 20260429
+%global commit 87ffc620e44c888b63ad1d9daf358ec8fa46fa7b
+%global commit_date 20260430
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:           cloud-hypervisor-nightly
