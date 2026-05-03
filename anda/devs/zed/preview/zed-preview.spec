@@ -1,3 +1,5 @@
+%global toolchain clang
+
 %bcond_with check
 %bcond_with debug_no_build
 
