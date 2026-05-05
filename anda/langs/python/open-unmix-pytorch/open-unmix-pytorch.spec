@@ -1,21 +1,19 @@
-%global pypi_name dataclasses-json
-%global _desc Easily serialize Data Classes to and from JSON.
+%global pypi_name openunmix
+%global _desc Open-Unmix - Music Source Separation for PyTorch.
 
 Name:			python-%{pypi_name}
-Version:		0.6.7
+Version:		1.3.0
 Release:		1%{?dist}
-Summary:		Easily serialize Data Classes to and from JSON
+Summary:		Open-Unmix - Music Source Separation for PyTorch
 License:		MIT
-URL:			https://github.com/lidatong/dataclasses-json
-Source0:		%{url}/archive/refs/tags/v%{version}.tar.gz
+URL:			https://github.com/sigsep/open-unmix-pytorch
+Source0:		%{pypi_source}
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
-BuildRequires:  python3-build
 BuildRequires:  python3-pip
-BuildRequires:  python3-poetry-core
-BuildRequires:  python3-poetry-dynamic-versioning
-BuildRequires:  python3-pyproject-metadata
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 
 Packager:	    Owen Zimmerman <owen@fyralabs.com>
 
@@ -30,22 +28,20 @@ Summary:        %{summary}
 %_desc
 
 %prep
-%git_clone %{url}.git v%{version}
+%autosetup -n %{pypi_name}-%{version}
 
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
-%pyproject_save_files dataclasses_json
+%pyproject_save_files %{pypi_name}
 
 %files -n python3-%{pypi_name} -f %{pyproject_files}
 %doc README.md
 %license LICENSE
+%{_bindir}/umx
 
 %changelog
 * Mon May 04 2026 Owen Zimmerman <owen@fyralabs.com>
-- Switch to git source, clean up spec
-
-* Wed Jan 07 2026 Owen Zimmerman <owen@fyralabs.com>
 - Initial commit
