@@ -2,7 +2,7 @@
 %global _desc Transcription, forced alignment, and audio indexing with OpenAI's Whisper.
 
 Name:			python-%{pypi_name}
-Version:		2.0.0
+Version:		2.19.1
 Release:		1%{?dist}
 Summary:		Transcription, forced alignment, and audio indexing with OpenAI's Whisper
 License:		MIT
