@@ -31,11 +31,7 @@ BuildRequires:    gcc-c++
 # Make sure you have Adoptium's repositories enabled
 # https://fedoraproject.org/wiki/Changes/ThirdPartyLegacyJdks
 # https://adoptium.net/installation/linux/#_centosrhelfedora_instructions
-%if 0%{?fedora} > 41
 BuildRequires:    temurin-17-jdk
-%else
-BuildRequires:    java-17-openjdk-devel
-%endif
 BuildRequires:    anda-srpm-macros
 BuildRequires:    desktop-file-utils
 BuildRequires:    libappstream-glib
@@ -64,11 +60,6 @@ Requires:         qt%{qt_version}-qtimageformats
 Requires:         qt%{qt_version}-qtsvg
 Requires:         javapackages-filesystem
 Recommends:       java-25-openjdk
-# See note above
-%if 0%{?fedora} && 0%{?fedora} < 42
-Recommends:       java-17-openjdk
-Suggests:         java-1.8.0-openjdk
-%endif
 
 # xrandr needed for LWJGL [2.9.2, 3) https://github.com/LWJGL/lwjgl/issues/128
 Recommends:       xrandr
@@ -105,7 +96,9 @@ sed -i "s|\$ORIGIN/||" CMakeLists.txt
   -DLauncher_CURSEFORGE_API_KEY="%{curseforge_key}" \
   %endif
   -DBUILD_TESTING=OFF \
+%if 0%{?fedora} > 43
   -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-error=sfinae-incomplete"
+%endif
 
 %build
 %cmake_build
