@@ -3,7 +3,7 @@
 %global __requires_exclude libstp\\.so\\.1|libyices\\.so\\.2\\.6
 
 Name:           bsc
-Version:        2025.07
+Version:        2026.01
 Release:        1%{?dist}
 Summary:        Bluespec Compiler (BSC)
 
