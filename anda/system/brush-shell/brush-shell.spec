@@ -1,5 +1,5 @@
 Name:           brush-shell
-Version:        0.4.0
+Version:        brush.shell.v0.4.0
 Release:        1%{?dist}
 Summary:        bash/POSIX-compatible shell implemented in Rust
 URL:            https://github.com/reubeno/brush
