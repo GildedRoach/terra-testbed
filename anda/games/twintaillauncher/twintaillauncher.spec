@@ -6,8 +6,8 @@
 
 Name:           twintaillauncher
 
-Version:        2.1.0
-Release:        2%{?dist}
+Version:        2.1.1
+Release:        1%{?dist}
 Summary:        A multi-platform launcher for your anime games
 Packager:        Yoong Jin <solomoncyj@gmail.com>
 
