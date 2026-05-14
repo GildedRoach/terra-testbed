@@ -7,9 +7,11 @@ Summary:        Advanced Linux Gaming Performance Daemon
 License:        MIT
 URL:            https://git.pika-os.com/general-packages/falcond
 Source0:        %{url}/archive/v%{version}.tar.gz
-BuildRequires:  anda-srpm-macros >= 0.2.18
+BuildRequires:  anda-srpm-macros >= 0.3.9
+BuildRequires:  glibc-devel
+BuildRequires:  pipewire-devel
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  zig >= 0.15.2
+BuildRequires:  zig >= 0.16.0
 BuildRequires:  zig-rpm-macros
 Requires:       %{name}-profiles
 Requires:       (scx-scheds or scx-scheds-nightly)
@@ -31,11 +33,14 @@ This eliminates the need to manually configure settings for each game.
 %install
 install -Dm644 debian/%{name}.service -t %{buildroot}%{_unitdir}
 # When DNF supports microarchitectures the fallback option for -c can be used here instead
-DESTDIR="%{buildroot}" \
 %ifarch x86_64
-%{zig_build_target -r fast -cx86_64_v2 -s} \
+%{zig_install_target -r fast -Cx86_64_v2 -s} \
+  -fsys=glibc \
+  -fsys=pipewire \
 %elifarch aarch64
-%{zig_build_target -r fast -s} \
+%{zig_install_target -r fast -s} \
+  -fsys=glibc \
+  -fsys=pipewire \
 %endif
 
 %pre
@@ -61,6 +66,9 @@ usermod -aG 'falcond' root || :
 %{_unitdir}/%{name}.service
 
 %changelog
+* Thu May  14 2026 Gilver E. <roachy@fyralabs.com> - 2.0.6-2
+- Updated for Zig and zig-rpm-macros 0.16.0
+- Updated for anda-srpm-macros 0.3.9
 * Thu Jan 1 2026 Gilver E. <roachy@fyralabs.com> - 1.2.1-2
 - Disabled service by default in favor of user enablement via falcond-gui
 - Added weak dep on falcond-gui
