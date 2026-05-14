@@ -28,6 +28,7 @@ This eliminates the need to manually configure settings for each game.
 %prep
 %autosetup -n %{name}/%{name}
 %zig_prep
+zig build fetch
 
 %build
 
