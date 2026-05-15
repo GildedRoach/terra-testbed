@@ -28,6 +28,8 @@ This eliminates the need to manually configure settings for each game.
 %prep
 %autosetup -n %{name}/%{name}
 zig build --fetch --verbose
+ls zig-pkg
+exit 1
 
 %build
 
