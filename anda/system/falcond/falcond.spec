@@ -9,7 +9,6 @@ URL:            https://git.pika-os.com/general-packages/falcond
 Source0:        %{url}/archive/v%{version}.tar.gz
 BuildRequires:  anda-srpm-macros >= 0.3.9
 BuildRequires:  glibc-devel
-BuildRequires:  pipewire-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  zig >= 0.16.0
 BuildRequires:  zig-rpm-macros
@@ -33,12 +32,8 @@ This eliminates the need to manually configure settings for each game.
 # When DNF supports microarchitectures the fallback option for -c can be used here instead
 %ifarch x86_64
 %{zig_install_target -r fast -Cx86_64_v2 -s} \
-  -fsys=glibc \
-  -fsys=pipewire \
 %elifarch aarch64
 %{zig_install_target -r fast -s} \
-  -fsys=glibc \
-  -fsys=pipewire \
 %endif
 
 %install
