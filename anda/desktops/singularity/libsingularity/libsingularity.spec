@@ -1,11 +1,11 @@
-%global commit 56e735b355e149555c924f09b5f635ebcd3b4224
-%global commit_date 20260515
+%global commit f0997ee20a4c7502e0634bbb689ea678e26c0ea3
+%global commit_date 20260519
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:           libsingularity
 Summary:        GTK4 application and widget framework for the Singularity Desktop Environment
 Version:        0~%{commit_date}git.%{shortcommit}
-Release:        2%{?dist}
+Release:        1%{?dist}
 License:        LGPL-2.1-or-later
 URL:            https://github.com/singularityos-lab/libsingularity
 Source0:        %url/archive/%commit/libsingularity-%commit.tar.gz
