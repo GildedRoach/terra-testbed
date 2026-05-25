@@ -6,7 +6,7 @@
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:			python-%{pypi_name}
-Version:		3.2^%{commit_date}git%{shortcommit}
+Version:		3.2
 Release:		1%{?dist}
 Summary:		Pure Python download utility
 License:	    LicenseRef-Fedora-Public-Domain
