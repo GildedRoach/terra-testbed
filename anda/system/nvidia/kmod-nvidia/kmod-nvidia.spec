@@ -9,8 +9,8 @@
 %{!?kversion: %global kversion %(rpm -q kernel-devel | sed 's/kernel-devel-//g')}
 
 Name:           kmod-%{kmod_name}
-Version:        595.71.05
-Release:        2%{?dist}
+Version:        610.43.02
+Release:        1%{?dist}
 Summary:        NVIDIA display driver kernel module
 Epoch:          3
 License:        NVIDIA License
