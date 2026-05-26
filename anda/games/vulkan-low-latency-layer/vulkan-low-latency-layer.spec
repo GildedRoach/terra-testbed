@@ -1,5 +1,5 @@
 Name:           vulkan-low-latency-layer
-Version:        0.1.0
+Version:        0.2.0
 Release:        1%{?dist}
 Summary:        Vulkan layer for hardware agnostic input latency reduction
 Packager:       Kyle Gospodnetich <me@kylegospodneti.ch>
