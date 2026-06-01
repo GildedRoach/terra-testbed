@@ -9,7 +9,7 @@
 %bcond docs 0
 
 Name:           LCEVCdec
-Version:        4.0.3
+Version:        4.1.0
 Release:        1%{?dist}
 Summary:        MPEG-5 LCEVC Decoder
 License:        BSD-3-Clause-Clear
