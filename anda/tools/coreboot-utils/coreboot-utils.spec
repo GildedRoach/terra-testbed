@@ -1,7 +1,7 @@
 %define debug_package %nil
 
 Name:           coreboot-utils
-Version:        26.03
+Version:        26.06
 Release:        1%{?dist}
 Summary:        Various coreboot utilities
 URL:            https://doc.coreboot.org
