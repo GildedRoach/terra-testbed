@@ -2,7 +2,7 @@
 %global _desc Chip support package for Cypress EZ-USB FX2 series microcontrollers.
 
 Name:			python-%{pypi_name}
-Version:		0.15
+Version:		0.16
 Release:		1%{?dist}
 Summary:		Chip support package for Cypress EZ-USB FX2 series microcontrollers
 License:		0BSD
