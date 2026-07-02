@@ -109,8 +109,8 @@
 Name:           ffmpeg
 %global pkg_name %{name}%{?pkg_suffix}
 
-Version:        7.1.4
-Release:        2%{?dist}
+Version:        7.1.5
+Release:        1%{?dist}
 Epoch:          1
 Summary:        A complete solution to record, convert and stream audio and video
 License:        GPL-3.0-or-later
