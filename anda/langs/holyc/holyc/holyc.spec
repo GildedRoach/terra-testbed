@@ -1,4 +1,4 @@
-%global ver 3-beta
+%global ver 4-beta
 
 Name:          holyc
 Version:       %{ver}~beta
