@@ -1,5 +1,5 @@
-%define sdk_version 2.2.0
-%global ver 2.2.0-a4
+%define sdk_version 2.3.0
+%global ver 2.3.0
 %global sanitized_ver %(echo %{ver} | sed 's/-//g')
 
 Name:           picotool
