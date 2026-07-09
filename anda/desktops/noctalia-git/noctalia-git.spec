@@ -2,9 +2,9 @@
 
 %global ver 5.0.0
 
-%global commit          099312d33ff36f8738fcac9df6c034e6c8289b9b
+%global commit          b7094a1e10b2413d6da5495f1e41294aff1e4f87
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
-%global commitdate      20260708
+%global commitdate      20260709
 
 Name:   	noctalia-git
 Version:	%{ver}^%{commitdate}git.%{shortcommit}
