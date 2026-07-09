@@ -1,4 +1,4 @@
-%global gcc_major 15
+%global gcc_major 14
 
 Name:           cuda-gcc
 Version:        14.3.1
