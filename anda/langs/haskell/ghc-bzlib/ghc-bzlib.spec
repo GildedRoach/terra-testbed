@@ -8,7 +8,7 @@
 # testsuite missing deps: tasty-hunit tasty-quickcheck
 
 Name:           ghc-%{pkg_name}
-Version:        0.5.2.0
+Version:        0.5.3.0
 Release:        1%{?dist}
 Summary:        Compression and decompression in the bzip2 format
 
