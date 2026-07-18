@@ -6,6 +6,8 @@ on:
   schedule:
     - cron:  '*/10 * * * *'
   workflow_dispatch:
+env:
+  GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
 
 jobs:
   merge:
@@ -36,9 +38,7 @@ jobs:
               git config --global merge.ours.driver true
               git remote add upstream https://github.com/terrapkg/packages
       
-          - name: Merge branch 
-            env:
-              GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+          - name: Merge branch
             run: |
               branch=${{ matrix.branch }}
               if [ "$branch" == 'main' ]; then
