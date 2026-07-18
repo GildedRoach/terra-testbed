@@ -38,7 +38,7 @@ jobs:
       
           - name: Merge branch 
             env:
-              GITHUB_TOKEN: ${{ github.token }}
+              GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
             run: |
               branch=${{ matrix.branch }}
               if [ "$branch" == 'main' ]; then
