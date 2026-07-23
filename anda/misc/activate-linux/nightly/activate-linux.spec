@@ -1,9 +1,9 @@
-%global commit cdca637ba63e8a56bda47fe90e55409d3344120d
-%global date 20260520
+%global commit 203ee66e8e2a614266d59921d5493ea681b11a74
+%global date 20260721
 %global short %(c=%{commit}; echo ${c:0:7})
-%global ver 1.1.0
+%global ver 1.2.0
 
-Name:           activate-linux
+Name:           activate-linux-nightly
 Summary:        The "Activate Windows" watermark ported to Linux
 Version:        %{ver}^%{date}git.%{short}
 License:        GPL-3.0-only
@@ -21,7 +21,7 @@ BuildRequires:  libX11-devel
 BuildRequires:  libXi-devel
 BuildRequires:  wayland-devel
 BuildRequires:  wayland-protocols-devel
-Packager:       Metcya <metcya@gmail.com>
+Packager:       Olivia <git@olivia.sh>
 
 %description
 The "Activate Windows" watermark ported to Linux with Xlib and cairo in C
@@ -37,16 +37,20 @@ Maintained by MrGlockenspiel.
 %make_build
 
 %install
-# ewwww
-export PREFIX=""
-export BINDIR=%{_bindir}
-%make_install
+%make_install PREFIX=%{_usr}
 
 %files
 %{_bindir}/activate-linux
+%{_mandir}/man1/activate-linux.1.*
 %license LICENSE.md
 %doc ARGS.md README.md
 
 %changelog
-* Sun Nov 2 2025 Metcya <metcya@gmail.com>
+* Sun Jul 19 2026 Olivia <git@olivia.sh> - 1.2.0^20260719git.a3e2346-3
+- Update packager
+
+* Sun Jul 19 2026 Olivia <git@olivia.sh> - 1.2.0^20260719git.a3e2346-2
+- Change to nightly
+
+* Sun Nov 2 2025 Olivia <git@olivia.sh>
 - Package activate-linux
