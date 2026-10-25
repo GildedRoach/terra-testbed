@@ -6,8 +6,6 @@ on:
   schedule:
     - cron:  '*/10 * * * *'
   workflow_dispatch:
-env:
-  GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
 
 jobs:
   merge:
@@ -22,7 +20,6 @@ jobs:
             - frawhide
             - f44
             - f43
-            - f42
             - el10
        
       steps:
@@ -30,6 +27,7 @@ jobs:
             with:
               fetch-depth: 0
               ref: ${{ matrix.branch }}
+              token: ${{ secrets.WORKFLOW_TOKEN }}
 
           - name: Set up upstream
             run: |
