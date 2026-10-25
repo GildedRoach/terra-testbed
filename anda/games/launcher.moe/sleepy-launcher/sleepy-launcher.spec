@@ -2,7 +2,7 @@
 %global crate sleepy-launcher
 %global appid moe.launcher.sleepy-launcher
 Name:           %{crate}
-Version:        1.7.0
+Version:        1.7.1
 Release:        1%{?dist}
 Summary:        Sleepy Game Launcher for Linux with automatic patching and telemetry disabling 
 
@@ -32,7 +32,7 @@ BuildRequires: python3
 BuildRequires: python3-gobject
 BuildRequires: libadwaita-devel
 BuildRequires: cmake
-BuildRequires: gcc clang-devel mold
+BuildRequires: gcc clang-devel
 BuildRequires: rust-packaging
 BuildRequires: desktop-file-utils
 BuildRequires: anda-srpm-macros

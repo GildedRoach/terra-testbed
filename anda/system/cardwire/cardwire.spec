@@ -1,6 +1,6 @@
 %global appid org.opengamingcollective.cardwire
 %bcond rust_nightly 1
-%global cardwire_toolchain nightly-2026-08-04
+%global cardwire_toolchain nightly-2026-08-12
 %define _cargo_home %{rpmbuilddir}%{?buildsubdir:/%{buildsubdir}}/.cargo
 %global _rustup_home %{rpmbuilddir}/.rustup
 %define __cargo /usr/bin/env CARGO_HOME=%{_cargo_home} RUSTUP_HOME=%{_rustup_home} RUSTFLAGS='%{terra_rustflags}' %{_cargo_home}/cardwire-cargo
@@ -8,8 +8,8 @@
 %define __rustdoc %{_cargo_home}/cardwire-rustdoc
 
 Name:           cardwire
-Version:        0.12.0
-Release:        1%{?dist}
+Version:        0.12.3
+Release:        3%{?dist}
 Summary:        A GPU Manager for linux that uses eBPF LSM hooks to block GPUs
 URL:            https://opengamingcollective.github.io/cardwire/
 Source0:        https://github.com/OpenGamingCollective/cardwire/archive/refs/tags/v%{version}.tar.gz
@@ -78,14 +78,14 @@ if test "\$1" = run && test "\$2" = %{cardwire_toolchain}; then
     shift 3
     exec %{_cargo_home}/cardwire-\$command "\$@"
 fi
-exec /usr/bin/rustup "\$@"
+exec %{_cargo_home}/bin/rustup "\$@"
 EOF
 chmod 0755 %{_cargo_home}/cardwire-cargo %{_cargo_home}/cardwire-rustc %{_cargo_home}/cardwire-rustdoc %{_cargo_home}/rustup
 # This pinned rust-src component may omit the lockfile required by -Z build-std.
 rust_src=%{_rustup_home}/toolchains/%{cardwire_toolchain}-x86_64-unknown-linux-gnu/lib/rustlib/src/rust
 install -Dpm0644 %{SOURCE2} "$rust_src/library/Cargo.lock"
 test -f "$rust_src/library/Cargo.lock"
-%cargo_prep_online
+%cargo_prep_online -u
 
 %build
 # The Rustup environment from %prep is not retained by RPM.
@@ -101,7 +101,7 @@ export RUSTC_BOOTSTRAP=1
 # nightly Cargo configuration used by Aya.
 rm -rf %{_builddir}/tool-cargo-home
 CARGO_HOME=%{_builddir}/tool-cargo-home RUSTUP_TOOLCHAIN=stable \
-    /usr/bin/cargo install --locked --root %{_builddir}/cargo-binstall cargo-binstall
+    /usr/bin/cargo install --root %{_builddir}/cargo-binstall cargo-binstall
 export PATH=%{_builddir}/cargo-binstall/bin:$PATH
 CARGO_HOME=%{_builddir}/tool-cargo-home RUSTUP_TOOLCHAIN=stable \
     cargo binstall --no-confirm --install-path %{_builddir}/bpf-linker/bin bpf-linker
@@ -113,7 +113,7 @@ install -Dm0755 target/rpm/cardwire             %{buildroot}%{_bindir}/cardwire
 install -Dm0755 target/rpm/cardwired            %{buildroot}%{_bindir}/cardwired
 install -Dm0644 assets/cardwired.service        %{buildroot}%{_unitdir}/cardwired.service
 install -Dm0644 assets/%{appid}.conf            %{buildroot}%{_datadir}/dbus-1/system.d/%{appid}.conf
-install -Dm0755 target/release/cardwire-gui     %{buildroot}%{_bindir}/cardwire-gui
+install -Dm0755 target/rpm/cardwire-gui     	%{buildroot}%{_bindir}/cardwire-gui
 install -Dm0644 assets/cardwire-gui.desktop     %{buildroot}%{_appsdir}/cardwire-gui.desktop
 install -Dm0644 assets/%{appid}.metainfo.xml    %{buildroot}%{_metainfodir}/%{appid}.metainfo.xml
 for icon in assets/icons/*.svg; do

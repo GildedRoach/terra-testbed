@@ -2,7 +2,7 @@
 %global crate honkers-railway-launcher
 %global appid moe.launcher.the-honkers-railway-launcher
 Name:           %{crate}
-Version:        1.15.2
+Version:        1.15.3
 Release:        1%{?dist}
 Summary:        The Honkers Railway launcher for Linux with automatic patching and telemetry disabling 
 
@@ -32,7 +32,7 @@ BuildRequires: python3
 BuildRequires: python3-gobject
 BuildRequires: libadwaita-devel
 BuildRequires: cmake
-BuildRequires: gcc clang-devel mold
+BuildRequires: gcc clang-devel
 BuildRequires: rust-packaging
 BuildRequires: desktop-file-utils
 BuildRequires: anda-srpm-macros

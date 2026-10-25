@@ -1,7 +1,7 @@
 %global crate create-tauri-app
 
 Name:           rust-create-tauri-app
-Version:        4.7.3
+Version:        4.8.0
 Release:        1%{?dist}
 Summary:        Rapidly scaffold out a new tauri app project
 License:        Apache-2.0 OR MIT
@@ -9,7 +9,6 @@ URL:            https://crates.io/crates/create-tauri-app
 Source:         %{terra_crates_source}
 BuildRequires:  anda-srpm-macros
 BuildRequires:  cargo-rpm-macros
-BuildRequires:  mold
 Suggests:       tauri
 Packager:       Gilver E. <roachy@fyralabs.com>
 

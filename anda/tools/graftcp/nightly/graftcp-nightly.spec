@@ -1,5 +1,5 @@
-%global commit 6f062009bc30e8d1e8230db7c9024762f2d7c15d
-%global commit_date 20260715
+%global commit 574b30bfe1d4d36b3f3bff72041665b4df19573f
+%global commit_date 20260826
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 %define debug_package %{nil}
@@ -11,7 +11,7 @@ Summary:		A flexible tool for redirecting a given program's TCP traffic to SOCKS
 URL:			https://github.com/hmgle/graftcp
 License:		GPL-3.0-or-later
 Source0:        %{url}/archive/%{commit}/graftcp-%{commit}.tar.gz
-BuildRequires:	gcc mold make golang systemd-rpm-macros
+BuildRequires:	gcc make golang systemd-rpm-macros
 Packager:       Owen Zimmerman <owen@fyralabs.com>
 Conflicts:      graftcp
 

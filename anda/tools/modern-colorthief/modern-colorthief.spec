@@ -1,5 +1,5 @@
 %global pypi_name modern_colorthief
-%bcond bootstrap 0
+%bcond bootstrap 1
 %bcond docs %{without bootstrap}
 
 # The srcrpm is not prefixed with Python because the source is mostly Rust
@@ -15,7 +15,6 @@ BuildRequires: anda-srpm-macros
 BuildRequires: cargo
 BuildRequires: cargo-rpm-macros
 BuildRequires: maturin
-BuildRequires: mold
 BuildRequires: python3-devel
 BuildRequires: pyproject-rpm-macros
 BuildRequires: python3dist(pip)

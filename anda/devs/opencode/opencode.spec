@@ -13,15 +13,28 @@ ExclusiveArch:  x86_64 aarch64
 
 %global appid ai.opencode.opencode
 
-Name:			opencode
-Version:		1.18.16
+Name:			opencode-cli
+Version:		2.1.4
 Release:		1%{?dist}
+
+# v2 renamed the CLI package dir from packages/opencode to packages/cli,
+# changed the dist dir name, and replaced the `completion` subcommand with
+# effect/cli's built-in `--completions` flag.
+%global v2 %{lua: print(rpm.vercmp(rpm.expand("%{version}"), "2.0") >= 0 and 1 or 0)}
+%if "%{v2}" == "1"
+%global pkgdir cli
+%global distdir cli
+%else
+%global pkgdir opencode
+%global distdir opencode
+%endif
 Summary:		Open source AI coding agent for the terminal, IDE, and desktop
 License:		MIT
 URL:			https://opencode.ai
 Source0:		https://github.com/anomalyco/opencode/archive/refs/tags/v%{version}.tar.gz
 Source1:		%{appid}.metainfo.xml
 Packager:		Caio Bruno <cbrunofb@gmail.com>
+Obsoletes:  opencode <= 1.18.18-1
 
 BuildRequires:	bun-bin gcc-c++ make python3 python-unversioned-command nodejs-npm
 
@@ -43,19 +56,25 @@ export npm_config_prefix=%{_builddir}/.npm-global
 export PATH=%{_builddir}/.npm-global/bin:$PATH
 
 %__bun install
-cd packages/opencode
+cd packages/%{pkgdir}
 OPENCODE_VERSION=%{version} OPENCODE_CHANNEL=latest %__bun run script/build.ts --single --skip-install
 
 %install
 export HOME=%{_builddir}/oc-home
 mkdir -p "$HOME"
 
-BIN=packages/opencode/dist/opencode-linux-%{a}/bin/opencode
-install -Dpm755 "$BIN" -t %{buildroot}%{_bindir}
+BIN=packages/%{pkgdir}/dist/%{distdir}-linux-%{a}/bin/opencode
+install -Dpm755 "$BIN" %{buildroot}%{_bindir}/opencode
 
+%if "%{v2}" == "1"
+"$BIN" --completions bash > opencode.bash
+"$BIN" --completions zsh  > _opencode
+"$BIN" --completions fish > opencode.fish
+%else
 "$BIN" completion bash > opencode.bash
 "$BIN" completion zsh  > _opencode
 "$BIN" completion fish > opencode.fish
+%endif
 install -Dm644 opencode.bash %{buildroot}%{bash_completions_dir}/opencode
 install -Dm644 _opencode     %{buildroot}%{zsh_completions_dir}/_opencode
 install -Dm644 opencode.fish %{buildroot}%{fish_completions_dir}/opencode.fish

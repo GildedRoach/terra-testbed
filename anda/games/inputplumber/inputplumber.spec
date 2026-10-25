@@ -1,16 +1,17 @@
 %global __brp_mangle_shebangs %{nil}
 
 Name:           inputplumber
-Version:        0.78.0
-Release:        3%{?dist}
+Version:        0.83.0
+Release:        2%{?dist}
 Summary:        Open source input router and remapper daemon for Linux
 License:        GPL-3.0-or-later
 URL:            https://github.com/ShadowBlip/InputPlumber
 Source0:        %{url}/archive/refs/tags/v%version.tar.gz
 Patch0:         make-install-dont-build.patch
-Patch1:         644.patch
+Patch1:         gpd_fixup.patch
+Patch2:         generic-hidraw.patch
 BuildRequires:  libevdev-devel libiio-devel git make cargo libudev-devel llvm-devel clang-devel
-BuildRequires:  rust-packaging cargo-rpm-macros mold rpm_macro(cargo_prep_online) systemd-rpm-macros
+BuildRequires:  rust-packaging cargo-rpm-macros rpm_macro(cargo_prep_online) systemd-rpm-macros
 Requires:       libevdev libiio
 Recommends:     steam gamescope-session linuxconsoletools
 Packager:       madonuko <mado@fyralabs.com>
@@ -23,7 +24,7 @@ can be used to combine any number of input devices (like gamepads, mice, and
 keyboards) and translate their input to a variety of virtual device formats.
 
 %prep
-%autosetup -n InputPlumber-%version -p1
+%autosetup -n InputPlumber-%version -S git_am -p1
 %cargo_prep_online
 
 %build
@@ -50,11 +51,12 @@ keyboards) and translate their input to a variety of virtual device formats.
 %_udevhwdbdir/59-inputplumber.hwdb
 %_udevhwdbdir/60-inputplumber-autostart.hwdb
 %_udevrulesdir/90-inputplumber-autostart.rules
+%{_modulesloaddir}/inputplumber-hrtimer.conf
 %_datadir/dbus-1/system.d/org.shadowblip.InputPlumber.conf
 %_datadir/inputplumber/
 %{_udevrulesdir}/99-inputplumber-device-setup.rules
 %{_udevrulesdir}/60-inputplumber-uaccess.rules
-%{_udevrulesdir}/50-8bitdo-u2-controller.rules
+%{_udevrulesdir}/55-8bitdo-u2-controller.rules
 %{_datadir}/polkit-1/actions/org.shadowblip.InputPlumber.policy
 %{_datadir}/polkit-1/rules.d/org.shadowblip.InputPlumber.rules
 

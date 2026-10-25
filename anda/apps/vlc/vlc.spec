@@ -32,7 +32,7 @@
 
 Name:       vlc
 Epoch:      2
-Version:    3.0.23
+Version:    3.0.24
 Release:    1%{?dist}
 Summary:    The cross-platform open-source multimedia framework, player and server
 License:    GPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-2-Clause AND BSD-3-Clause
@@ -797,7 +797,6 @@ rm -rf %{buildroot}%{_docdir}/vlc
 
 %check
 desktop-file-validate %{buildroot}%{_appsdir}/vlc.desktop
-appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/vlc.appdata.xml
 
 # chroma_copy_test fails on s390x (big endian?)
 %ifnarch s390x

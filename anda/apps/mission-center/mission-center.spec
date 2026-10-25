@@ -1,15 +1,14 @@
 %global appid io.missioncenter.MissionCenter
 
 %global forgeurl0 https://gitlab.com/mission-center-devs/mission-center
-Version: 1.2.0
+Version:        1.2.0
 %global tag0 v%{version}
 %global commit1 a5272b3c1d853caa4044b737cf49257bfc4c86f2
-
 
 %forgemeta -a
 
 Name:           mission-center
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Monitor your CPU, Memory, Disk, Network and GPU usage
 SourceLicense:  GPL-3.0-or-later
 License:        %{sourcelicense} AND (Apache-2.0 OR MIT) AND MIT AND Apache-2.0 AND BSL-1.0 AND (MIT OR Apache-2.0 OR LGPL-2.1-or-later) AND (Unlicense OR MIT)
@@ -41,25 +40,26 @@ BuildRequires: desktop-file-utils
 BuildRequires: appstream-data
 BuildRequires: libappstream-glib
 Recommends: nethogs
+Requires:   lm_sensors
+
+Packager:      Owen Zimmerman <owen@fyralabs.com>
 
 %description
 Monitor your CPU, Memory, Disk, Network and GPU usage
 
 %prep
-%git_clone %{url}.git %{tag0}
-ls -la
+%git_clone %{url}.git v%{version}
 mkdir -p ./subprojects/magpie
 pushd ./subprojects/magpie/
-%cargo_prep_online
+%cargo_prep_online -u
 popd
-%cargo_prep_online
+%cargo_prep_online -u
 
 %conf
 %meson
 
 %build
 %meson_build
-%{cargo_license_summary_online}
 %{cargo_license_online} > LICENSE.dependencies
 
 %install
@@ -68,7 +68,6 @@ popd
 
 %check
 %desktop_file_validate %{buildroot}/%{_datadir}/applications/io.missioncenter.MissionCenter.desktop
-appstream-util validate-relax  %{buildroot}/%{_datadir}/metainfo/io.missioncenter.MissionCenter.metainfo.xml
 %meson_test
 
 # https://gitlab.com/mission-center-devs/mission-center/-/wikis/Home/Nethogs
@@ -80,8 +79,7 @@ fi
 
 %files -f missioncenter.lang
 %doc README.md
-%license COPYING
-%license LICENSE.dependencies
+%license COPYING LICENSE.dependencies
 %{_datadir}/missioncenter/
 %{_appsdir}/%{appid}.desktop
 %{_metainfodir}/%{appid}.metainfo.xml

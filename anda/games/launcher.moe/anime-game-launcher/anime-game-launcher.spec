@@ -2,7 +2,7 @@
 %global crate anime-game-launcher
 %global appid moe.launcher.an-anime-game-launcher
 Name:           %{crate}
-Version:        3.19.7
+Version:        3.19.8
 Release:        1%{?dist}
 Summary:        An Anime Game Launcher for Linux with automatic patching and telemetry disabling
 
@@ -32,7 +32,7 @@ BuildRequires: python3
 BuildRequires: python3-gobject
 BuildRequires: libadwaita-devel
 BuildRequires: cmake
-BuildRequires: gcc clang-devel mold
+BuildRequires: gcc clang-devel
 BuildRequires: rust-packaging
 BuildRequires: desktop-file-utils
 BuildRequires: anda-srpm-macros

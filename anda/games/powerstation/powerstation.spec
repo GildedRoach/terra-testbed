@@ -1,6 +1,6 @@
 Name:           powerstation
-Version:        0.8.1
-Release:        2%?dist
+Version:        0.8.4
+Release:        2%{?dist}
 Summary:        Daemon for controlling TDP and performance over DBus
 
 SourceLicense:  GPL-3.0-or-later
@@ -23,11 +23,11 @@ Powerstation is a daemon for controlling TDP and performance over DBus.
 It is designed for use on AMD platforms with access to libryzenadj.
 
 %prep
-%autosetup -n PowerStation-%{version}
+%autosetup -n PowerStation-%{version} -p1
 %cargo_prep_online
 
 %build
-%{cargo_build} --locked
+%{cargo_build}
 %cargo_license_summary_online
 %{cargo_license_online} > LICENSE.dependencies
 

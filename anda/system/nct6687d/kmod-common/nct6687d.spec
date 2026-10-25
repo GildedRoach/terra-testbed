@@ -1,6 +1,6 @@
-%global commit 163ffdcc3928a2bb04acdf9607e45f98eeb46b8a
+%global commit ec1030ba7acc32b36723af0c7c9c9aead5e57b54
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commitdate 20260809
+%global commitdate 20261020
 
 Name:           nct6687d
 Version:        1.0^%{commitdate}git.%{shortcommit}

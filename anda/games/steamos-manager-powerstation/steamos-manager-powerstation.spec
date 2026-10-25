@@ -1,6 +1,6 @@
-%global commit 238a1413b3bd9888b1c4d9fd592e8111326549d2
+%global commit aa85e5bf34808464ed2cbe39b84f7eda0ee522e2
 %global shortcommit %{sub %{commit} 0 7}
-%global commitdate 20260810
+%global commitdate 20261018
 
 %global steamos_manager_systemd_user_units steamos-manager.service steamos-manager-configure-cecd.service steamos-manager-session-cleanup.service
 
@@ -18,7 +18,6 @@ BuildRequires:    anda-srpm-macros
 BuildRequires:    cargo-rpm-macros
 BuildRequires:    clang-devel
 BuildRequires:    rust
-BuildRequires:    mold
 BuildRequires:    glib2-devel
 BuildRequires:    speech-dispatcher-devel
 BuildRequires:    pkgconfig(libudev)
@@ -44,7 +43,7 @@ and OGC gamescope-sessions.
 %prep
 %autosetup -n steamos-manager-%{commit}
 install -Dp -m644 -t data/selinux %{SOURCE1} %{SOURCE2} %{SOURCE3}
-%cargo_prep_online
+%cargo_prep_online -u
 
 %build
 %cargo_build

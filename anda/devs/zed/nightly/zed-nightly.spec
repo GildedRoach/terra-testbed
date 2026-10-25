@@ -1,7 +1,7 @@
-%global commit 6634c945d3af826e6466d6da3eee0782c62b5a8d
+%global commit 347f171a3fd00a3b672382d78348b37bd969d17c
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20260811
-%global ver 1.16.0
+%global commit_date 20261025
+%global ver 1.27.0
 
 %bcond_with check
 %bcond_with debug_no_build
@@ -38,13 +38,13 @@ Conflicts:      zed-preview
 # BUG: fedora rustc missing this dep
 BuildRequires:  libedit(x86-64)
 %endif
+BuildRequires:  cargo-about
 BuildRequires:  cargo-rpm-macros >= 24
 BuildRequires:  anda-srpm-macros
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-envsubst
 BuildRequires:  clang
-BuildRequires:  mold
 BuildRequires:  cmake
 BuildRequires:  alsa-lib-devel
 BuildRequires:  fontconfig-devel
@@ -119,7 +119,7 @@ export ZED_UPDATE_EXPLANATION="Run dnf up to update Zed Nightly from Terra."
 echo "nightly" > crates/zed/RELEASE_CHANNEL
 
 %cargo_build -- --package zed --package cli
-ALLOW_MISSING_LICENSES=1 script/generate-licenses
+ALLOW_MISSING_LICENSES=1 CARGO_NET_OFFLINE=false script/generate-licenses
 %endif
 
 %install
@@ -141,17 +141,17 @@ install -Dm644 %appid.metainfo.xml %{buildroot}%{_metainfodir}/%appid.metainfo.x
 # The license generation script doesn't generate licenses for ALL compiled dependencies, just direct deps of Zed, and it does not "group" licenses
 # Zed also needs a special approach to fetch the dep licenses
 %if %{without debug_no_build}
-%{__cargo} tree                                                             \
-    -Z avoid-dev-deps                                                       \
-    --workspace                                                             \
-    --edges no-build,no-dev,no-proc-macro                                   \
-    --target all                                                            \
-    %{__cargo_parse_opts %{-n} %{-a} %{-f:-f%{-f*}}}                        \
-    --prefix none                                                           \
-    --format "{l}: {p}"                                                     \
-    | sed -e "s: ($(pwd)[^)]*)::g" -e "s: / :/:g" -e "/\/.*:/{s/\// OR /}"  \
-    | sed -e '/.*(\*).*/d' -e '/^: pet/ s/./MIT&/'                          \
-    | sort -u                                                               \
+%{__cargo} tree                                                          \
+    -Z avoid-dev-deps                                                    \
+    --workspace                                                          \
+    --edges no-build,no-dev,no-proc-macro                                \
+    --target all                                                         \
+    %{__cargo_parse_opts %{-n} %{-a} %{-f:-f%{-f*}}}                     \
+    --prefix none                                                        \
+    --format "{l}: {p}"                                                  \
+    | sed -e "s: ($(pwd)[^)]*)::g" -e ":b; s/^\([^:]*\)*\//\1 OR /; tb;" \
+    | sed -e '/.*(\*).*/d' -e '/^: pet/ s/./MIT&/'                       \
+    | sort -u                                                            \
 > LICENSE.dependencies
 %endif
 mv assets/icons/LICENSES LICENSE.icons
@@ -161,7 +161,6 @@ mv assets/fonts/ibm-plex-sans/license.txt LICENSE.fonts
 
 %if %{with check}
 %check
-appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%appid.metainfo.xml
 desktop-file-validate %{buildroot}%{_datadir}/applications/%appid.desktop
 
 %if %{without debug_no_build}

@@ -6,7 +6,7 @@
 %global crate gping
 
 Name:           rust-gping
-Version:        1.20.4
+Version:        1.21.0
 Release:        1%{?dist}
 Summary:        Ping, but with a graph
 
@@ -15,7 +15,7 @@ URL:            https://crates.io/crates/gping
 Source:         %{terra_crates_source}
 Source1:        https://github.com/orf/gping/blob/gping-v%version/LICENSE
 
-BuildRequires:  anda-srpm-macros rust-packaging >= 21 mold
+BuildRequires:  anda-srpm-macros rust-packaging >= 21
 
 %global _description %{expand:
 Ping, but with a graph.}

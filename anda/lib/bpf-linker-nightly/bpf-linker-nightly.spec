@@ -1,10 +1,10 @@
 %global crate bpf-linker
-%global llvm_version 22.1.8
+%global llvm_version 23.1.1
 %bcond check 0
 
 Name:           bpf-linker-nightly
-Version:        0.10.4
-Release:        1%{?dist}
+Version:        0.11.1
+Release:        3%{?dist}
 Summary:        BPF static linker built with Rust nightly
 URL:            https://github.com/aya-rs/bpf-linker
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz

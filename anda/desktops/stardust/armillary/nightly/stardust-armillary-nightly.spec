@@ -1,17 +1,18 @@
-%global commit f6388f05209195818418fdd9db061000b0f007af
-%global commit_date 20260320
+%global commit b94d405024b339e04f04099d0c4ee9a746beb035
+%global commit_date 20261011
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 # Exclude input files from mangling
 %global __brp_mangle_shebangs_exclude_from ^/usr/src/.*$
 
 Name:           stardust-xr-armillary-nightly
 Version:        0~%{commit_date}git.%{shortcommit}
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Model viewer for Stardust XR
 URL:            https://github.com/StardustXR/armillary
 Source0:        %url/archive/%commit/armillary-%commit.tar.gz
-License:        MIT AND (MIT OR Apache-2.0) AND Unicode-3.0 AND (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT) AND (BSD-2-Clause OR Apache-2.0 OR MIT) AND BSD-3-Clause AND (BSD-3-Clause OR MIT OR Apache-2.0) AND ISC AND BSD-3-Clause AND LGPL-2.1-or-later AND (MIT OR Zlib OR Apache-2.0) AND MPL-2.0 AND Unicode-3.0 AND (Unlicense OR MIT) AND Zlib
-BuildRequires:  cargo cmake anda-srpm-macros cargo-rpm-macros mold
+SourceLicense:  MIT
+License:        %{SourceLicense} AND (MIT OR Apache-2.0) AND Unicode-3.0 AND (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT) AND (BSD-2-Clause OR Apache-2.0 OR MIT) AND BSD-3-Clause AND (BSD-3-Clause OR MIT OR Apache-2.0) AND ISC AND BSD-3-Clause AND LGPL-2.1-or-later AND (MIT OR Zlib OR Apache-2.0) AND MPL-2.0 AND Unicode-3.0 AND (Unlicense OR MIT) AND Zlib
+BuildRequires:  cargo cmake anda-srpm-macros cargo-rpm-macros
 
 Provides:       armillary-nightly stardust-armillary-nightly
 Conflicts:      stardust-xr-armillary
@@ -27,7 +28,6 @@ A model viewer for Stardust XR which works great for hand tracking, pointers, an
 %build
 
 %install
-%define __cargo_common_opts %{?_smp_mflags} -Z avoid-dev-deps --locked
 %cargo_install
 %{cargo_license_online} > LICENSE.dependencies
 

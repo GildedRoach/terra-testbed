@@ -1,5 +1,5 @@
 Name:           darkly
-Version:        0.5.38
+Version:        0.5.42
 Release:        1%{?dist}
 License:        GPL-2.0-or-later
 Summary:        Forked from the lightly theme, this style brings a fresh and unique look to your applications
@@ -40,14 +40,6 @@ Requires:       kf6-plasma
 %description
 %{summary}.
 
-%package devel
-Summary:       Development files for %{name}
-Requires:      %{name} = %{evr}
-
-%description   devel
-This package contains the development libraries for %{name}.
-
-
 %prep
 %autosetup -n Darkly-%{version}
 
@@ -60,8 +52,10 @@ This package contains the development libraries for %{name}.
 
 %install
 %cmake_install
+%find_lang darkly_kwin_deco
+%find_lang darkly_style_config
 
-%files
+%files -f darkly_kwin_deco.lang -f darkly_style_config.lang 
 %doc README.md
 %license COPYING
 %{_bindir}/darkly-settings6
@@ -72,8 +66,6 @@ This package contains the development libraries for %{name}.
 %{_datadir}/kservices6/darklydecorationconfig.desktop
 %{_datadir}/kstyle/themes/darkly.themerc
 %{_datadir}/plasma/desktoptheme/darkly/*
-
-%files devel
 %{_libdir}/cmake/Darkly/
 %{_qt6_plugindir}/kstyle_config/darklystyleconfig.so
 %{_qt6_plugindir}/org.kde.kdecoration3/org.kde.darkly.so

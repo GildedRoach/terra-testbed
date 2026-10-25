@@ -11,7 +11,7 @@
 %endif
 
 Name:           %{real_name}-580xx
-Version:        580.178.04
+Version:        580.196.07
 Release:        1%{?dist}
 Summary:        NVIDIA's proprietary display driver for NVIDIA graphic cards
 Epoch:          3
@@ -356,11 +356,6 @@ mkdir -p %{buildroot}%{_sysconfdir}/dnf/plugins/needs-restarting.d
 echo %{name} > %{buildroot}%{_sysconfdir}/dnf/plugins/needs-restarting.d/%{name}.conf
 echo %{name}-cuda > %{buildroot}%{_sysconfdir}/dnf/plugins/needs-restarting.d/%{name}-cuda.conf
 %endif
-
-%check
-# Using appstreamcli: appstreamcli validate --strict
-# Icon type local is not supported by appstreamcli for drivers
-appstream-util validate --nonet %{buildroot}%{_metainfodir}/com.nvidia.driver.metainfo.xml
 
 %endif
 

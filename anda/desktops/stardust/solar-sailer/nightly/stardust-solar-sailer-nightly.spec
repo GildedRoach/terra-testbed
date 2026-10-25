@@ -1,5 +1,5 @@
-%global commit e0b27dda48f204883c52ecb3e1f436e31200f6e5
-%global commit_date 20260320
+%global commit e9a2fb75cbaa160b13a6c2ec39780b0134c0712e
+%global commit_date 20261014
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 # Exclude input files from mangling
@@ -11,8 +11,9 @@ Release:        1%{?dist}
 Summary:        Glide through space! This play space mover allows you to fly by dragging the space with momentum!
 URL:            https://github.com/StardustXR/solar-sailer
 Source0:        %url/archive/%commit.tar.gz
-License:        MIT AND (MIT OR Apache-2.0) AND Unicode-3.0 AND (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT) AND Apache-2.0 AND (BSD-2-Clause OR Apache-2.0 OR MIT) AND (BSD-3-Clause OR MIT OR Apache-2.0) AND BSD-3-Clause AND (MIT AND BSD-3-Clause) AND (MIT OR Apache-2.0 OR LGPL-2.1-or-later) AND (MIT OR Apache-2.0) AND (MIT OR Zlib OR Apache-2.0) AND MPL-2.0 AND Unicode-3.0 AND (Unlicense OR MIT)
-BuildRequires:  cargo anda-srpm-macros cargo-rpm-macros mold python3-devel
+SourceLicense:  MIT
+License:        %{SourceLicense} AND (MIT OR Apache-2.0) AND Unicode-3.0 AND (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT) AND Apache-2.0 AND (BSD-2-Clause OR Apache-2.0 OR MIT) AND (BSD-3-Clause OR MIT OR Apache-2.0) AND BSD-3-Clause AND (MIT AND BSD-3-Clause) AND (MIT OR Apache-2.0 OR LGPL-2.1-or-later) AND (MIT OR Apache-2.0) AND (MIT OR Zlib OR Apache-2.0) AND MPL-2.0 AND Unicode-3.0 AND (Unlicense OR MIT)
+BuildRequires:  cargo anda-srpm-macros cargo-rpm-macros python3-devel
 
 Provides:       solar-sailer-nightly stardust-solar-sailer-nightly
 Conflicts:      stardust-xr-solar-sailer
@@ -31,7 +32,7 @@ Packager:       Owen Zimmerman <owen@fyralabs.com>
 %install
 mkdir -p %{buildroot}%{_datadir}/%{name}/solar_sailer
 %cargo_install
-install -Dm644 res/solar_sailer/move_icon.glb %{buildroot}%{_datadir}/%{name}/solar_sailer/move_icon.glb
+install -Dm644 data/org.stardustxr.SolarSailer/move_icon.glb %{buildroot}%{_datadir}/%{name}/solar_sailer/move_icon.glb
 %{cargo_license_online} > LICENSE.dependencies
 
 %files

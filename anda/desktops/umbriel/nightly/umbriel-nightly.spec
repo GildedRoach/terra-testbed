@@ -1,0 +1,99 @@
+%global debug_package   %{nil}
+
+%global commit          28fa2149c6ce9ce66f8b29dc6e6058a1a8fdcc14
+%global shortcommit     %(c=%{commit}; echo ${c:0:7})
+%global commitdate      20261024
+
+Name:   	umbriel-nightly
+Version:	0^%{commitdate}git.%{shortcommit}
+Release:	1%{?dist}
+Summary:	A work-in-progress Wayland compositor designed for daily use, with scrolling and dwindle layouts, per-output workspaces, window rules, blur, shadows, and fluid animations
+
+License:	MIT
+URL:		https://github.com/noctalia-dev/umbriel
+Source0:    https://github.com/noctalia-dev/umbriel/archive/%{commit}.tar.gz
+
+BuildRequires:  wlroots-devel >= 0.20
+BuildRequires:  meson
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
+BuildRequires:  git
+BuildRequires:  pkgconfig(sdbus-c++)
+BuildRequires:  pkgconfig(tomlplusplus)
+BuildRequires:  pkgconfig(nlohmann_json)
+BuildRequires:  pkgconfig(md4c)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(jemalloc)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(pangocairo)
+BuildRequires:  pkgconfig(libdisplay-info)
+
+Requires:       xwayland-satellite
+Requires:       xdg-desktop-portal-umbriel-nightly
+
+Packager:       Cypress Reed <cypress@fyralabs.com>
+
+%description
+%{summary}.
+
+%prep
+%autosetup -n umbriel-%{commit}
+
+%conf
+%meson --buildtype=release
+
+%build
+%meson_build
+
+%install
+%meson_install --skip-subprojects
+
+%post
+%systemd_user_post umbriel.service
+
+%preun
+%systemd_user_preun umbriel.service
+
+%postun
+%systemd_user_postun umbriel.service
+
+%files
+%doc README.md
+%license LICENSE
+%{_bindir}/umbriel
+%{_bindir}/start-umbriel
+%config %{_datadir}/umbriel/config.toml
+%{_datadir}/wayland-sessions/umbriel.desktop
+%{_userunitdir}/umbriel.service
+%{_userunitdir}/umbriel-session.target
+%{_userunitdir}/umbriel-shutdown.target
+%{_datadir}/umbriel/effects/animation/reveal/effect.toml
+%{_datadir}/umbriel/effects/animation/reveal/shader.glsl
+%{_datadir}/umbriel/effects/animation/squash/effect.toml
+%{_datadir}/umbriel/effects/animation/squash/shader.glsl
+%{_datadir}/umbriel/effects/border/pulse/effect.toml
+%{_datadir}/umbriel/effects/border/pulse/shader.glsl
+%{_datadir}/umbriel/effects/cursor/glow/effect.toml
+%{_datadir}/umbriel/effects/cursor/glow/shader.glsl
+%{_datadir}/umbriel/effects/screen/vignette/effect.toml
+%{_datadir}/umbriel/effects/screen/vignette/shader.glsl
+%{_datadir}/umbriel/effects/window/scanlines/effect.toml
+%{_datadir}/umbriel/effects/window/scanlines/shader.glsl
+%{_datadir}/umbriel/effects/animation/workspace_wipe/effect.toml
+%{_datadir}/umbriel/effects/animation/workspace_wipe/shader.glsl
+%{_datadir}/umbriel/effects/border/audio/effect.toml
+%{_datadir}/umbriel/effects/border/audio/shader.glsl
+%{_datadir}/umbriel/effects/cursor/trail-path/effect.toml
+%{_datadir}/umbriel/effects/cursor/trail-path/shader.glsl
+%{_datadir}/umbriel/effects/cursor/trail/effect.toml
+%{_datadir}/umbriel/effects/cursor/trail/shader.glsl
+
+%changelog
+* Mon Sep 07 2026 Cypress Reed <cypress@fyralabs.com>
+- No more submodule needed, remove system scenefx requirement
+
+* Mon Aug 24 2026 Cypress Reed <cypress@fyralabs.com>
+- Initial package

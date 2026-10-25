@@ -9,8 +9,8 @@
 %endif
 
 Name:           lovely-injector
-Version:        0.9.0
-Release:        1%?dist
+Version:        0.10.0
+Release:        1%{?dist}
 Summary:        A runtime lua injector for games built with LÖVE
 
 License:        MIT
@@ -22,7 +22,7 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 Packager:       Cappy Ishihara <cappy@cappuchino.xyz>
 
-BuildRequires:  mold anda-srpm-macros cargo-rpm-macros >= 24
+BuildRequires:  anda-srpm-macros cargo-rpm-macros >= 24
 %if %{with rust_nightly}
 BuildRequires: rustup
 %endif

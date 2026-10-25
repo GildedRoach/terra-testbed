@@ -1,4 +1,4 @@
-name: Bootstrap Andaman and Subatomic
+name: Bootstrap Core Terra Packages
 permissions:
   contents: read
   attestations: write
@@ -46,7 +46,7 @@ jobs:
           dnf5 install -y ./anda-build/rpm/rpms/anda-*.rpm
 
       - name: Install build dependencies
-        run: dnf5 builddep -y anda/terra/{mock-configs,srpm-macros,appstream-helper}/*.spec anda/{buildsys/anda,tools/subatomic}/*.spec
+        run: dnf5 builddep -y anda/terra/{mock-configs,srpm-macros,appstream-helper,cli-tools}/*.spec anda/{buildsys/anda,tools/subatomic}/*.spec
 
       - name: Install Anda
         run: |
@@ -60,14 +60,24 @@ jobs:
           export PATH=$PATH:/github/home/.cargo/bin
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           anda build -D "vendor Terra" -rrpmbuild anda/terra/mock-configs/pkg
+
+      - name: Build terra-cli-tools
+        run: anda build -D "vendor Terra" -rrpmbuild anda/terra/cli-tools/pkg
+
       - name: Install terra-mock-configs
         run: dnf5 install -y anda-build/rpm/rpms/terra-mock-configs*.rpm
+
+      - name: Build terra-gpg-keys
+        run: anda build -D "vendor Terra" -rrpmbuild anda/terra/gpg-keys/pkg
 
       - name: Build terra-release
         run: anda build -D "vendor Terra" -rrpmbuild anda/terra/release/pkg
 
       - name: Build terra-appstream-helper
-        run: anda build -D "vendor Terra" -D "__python %{__python3}" -rrpmbuild anda/terra/appstream-helper/pkg
+        run: anda build -D "vendor Terra" -rrpmbuild anda/terra/appstream-helper/pkg
+
+      - name: Build terra-scripts
+        run: anda build -D "vendor Terra" -rrpmbuild anda/terra/terra-scripts/pkg
 
       - name: Build Subatomic
         run: anda build -D "vendor Terra" -rrpmbuild anda/tools/subatomic/pkg
@@ -97,7 +107,7 @@ jobs:
           curl -H "Authorization: Bearer ${{ secrets.MADOGUCHI_JWT }}" https://madoguchi.fyralabs.com/v4/repos/terra${{ matrix.version }} -X PUT -H "Content-Type: application/json" -d '{"gh":"https://github.com/terrapkg/packages/tree/${{ matrix.version }}","link":"https://repos.fyralabs.com/terra${{ matrix.version }}/"}' --fail-with-body
 
       - name: Attest build provenance
-        uses: actions/attest-build-provenance@0f67c3f4856b2e3261c31976d6725780e5e4c373 # v4.1.1
+        uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
         with:
           subject-path: |
             anda-build/rpm/rpms/*

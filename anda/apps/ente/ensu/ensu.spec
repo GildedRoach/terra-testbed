@@ -1,4 +1,4 @@
-%global tag                 ensu-v0.1.17
+%global tag                 ensu-v0.1.22
 %global appid               io.ente.ensu
 %global developer           "Ente"
 %global org                 "io.ente"
@@ -11,13 +11,13 @@
 %define _package_note_flags %nil
 %undefine _package_note_status
 %define terra_rustflags %build_rustflags
-%bcond_with mold
+%bcond_with lld
 %global __brp_mangle_shebangs_exclude_from ^/usr/src/.*$
 %global _distro_extra_cxxflags -fno-permissive
 
 Name:           ensu
 Version:        %(echo %tag | sed 's/^ensu-v//')
-Release:        1%?dist
+Release:        1%{?dist}
 Summary:        Private, personal LLM app that runs on your device and grows with you over time
 License:        AGPL-3.0-only
 URL:            https://ente.com/ensu

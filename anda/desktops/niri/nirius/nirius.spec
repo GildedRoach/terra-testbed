@@ -1,5 +1,5 @@
 Name:           nirius
-Version:        0.9.0
+Version:        0.10.0
 Release:        1%{?dist}
 Summary:        Utility commands for niri
 
@@ -11,7 +11,6 @@ Packager:       Olivia <git@olivia.sh>
 
 BuildRequires:  cargo
 BuildRequires:  cargo-rpm-macros
-BuildRequires:  mold
 Requires:       niri
 
 %description

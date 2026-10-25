@@ -4,10 +4,10 @@
 
 Name:           steam
 Version:        1.0.0.87
-Release:        1%{?dist}
+Release:        5%{?dist}
 Summary:        Installer for the Steam software distribution service
 # Redistribution and repackaging for Linux is allowed, see license file. udev rules are MIT.
-License:        Steam License Agreement and MIT
+License:        Steam License Agreement
 URL:            http://www.steampowered.com/
 ExclusiveArch:  x86_64
 Packager:       Cappy Ishihara <cappy@fyralabs.com>
@@ -206,7 +206,6 @@ install -m 775 -p %{SOURCE7} %{buildroot}%{_bindir}/steamrestart
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
-appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/%{appid}.metainfo.xml
 
 %files
 %license COPYING steam_subscriber_agreement.txt

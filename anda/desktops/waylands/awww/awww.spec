@@ -1,13 +1,13 @@
 Name:           awww
 Version:        0.12.1
-Release:        2%?dist
+Release:        3%?dist
 Summary:        Wallpaper daemon for Wayland
 SourceLicense:  GPL-3.0-only
 License:        (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT) AND BSD-3-Clause AND MIT AND (MIT OR Apache-2.0) AND (MIT OR Apache-2.0 OR Zlib) AND (MIT OR Zlib OR Apache-2.0) AND (Unlicense OR MIT) AND (Zlib OR Apache-2.0 OR MIT)
 URL:            https://codeberg.org/LGFae/awww
 Source0:		%url/archive/v%version.tar.gz
 Packager:       madonuko <mado@fyralabs.com>
-BuildRequires:  anda-srpm-macros rust-packaging rpm_macro(bash_completions_dir) mold
+BuildRequires:  anda-srpm-macros rust-packaging rpm_macro(bash_completions_dir)
 BuildRequires:  scdoc
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(liblz4)
@@ -15,7 +15,7 @@ BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
 
-Obsoletes:      swww < %{evr}
+Obsoletes:      swww < 0.11.2-2
 
 %description
 awww is a wallpaper daemon for Wayland that is controlled

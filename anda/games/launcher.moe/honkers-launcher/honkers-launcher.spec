@@ -2,8 +2,8 @@
 %global crate honkers-launcher
 %global appid moe.launcher.honkers-launcher
 Name:           %{crate}
-Version:        1.13.0
-Release:        1%?dist
+Version:        1.14.1
+Release:        1%{?dist}
 Summary:        Honkers Launcher for Linux with automatic patching and telemetry disabling 
 
 License:        GPL-3.0-or-later
@@ -32,7 +32,7 @@ BuildRequires: python3
 BuildRequires: python3-gobject
 BuildRequires: libadwaita-devel
 BuildRequires: cmake
-BuildRequires: gcc clang-devel mold
+BuildRequires: gcc clang-devel
 BuildRequires: rust-packaging
 BuildRequires: desktop-file-utils
 BuildRequires: anda-srpm-macros

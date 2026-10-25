@@ -1,13 +1,14 @@
 %global debug_package %{nil}
-%global commit c09fa9a6e98b951ea4ab9d4100aa85281a659074
+%global commit 71bddb5158fb7f0bd244ad7aa6b2efab024531a7
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20260714
+%global commit_date 20260820
 # Actual "release" version, currently unused as the release versions are back and forth on if on if they use 1.0.0 or 1.0.1
 # Use this if they ever stop doing that I guess
 %global ver 1.0.1
 
 Name:           intel-ipu6-drivers
 Summary:        Common files for Intel IPU6 drivers
+Epoch:          1
 Version:        0^%{commit_date}git.%{shortcommit}
 Release:        1%{?dist}
 License:        GPL-2.0-or-later

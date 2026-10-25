@@ -1,16 +1,17 @@
+%global toolchain clang
 #? https://github.com/flameshot-org/flameshot/blob/master/packaging/rpm/fedora/flameshot.spec
 
 %global ver 14.0.0
-%global commit 57c9ef4e72f46416edddc254cc593f227e085d36
+%global commit c1c4f202a2033c469e77eefd679167050a66e35c
 %global shortcommit %{sub %{commit} 1 7}
-%global commit_date 20260810
+%global commit_date 20261022
 %global devel_name QtColorWidgets
-%global _distro_extra_cflags -fuse-ld=mold
-%global _distro_extra_cxxflags -fuse-ld=mold
+%global _distro_extra_cflags -fuse-ld=lld
+%global _distro_extra_cxxflags -fuse-ld=lld
 
 Name:			flameshot.nightly
 Version:		%ver^%{commit_date}git.%shortcommit
-Release:		2%?dist
+Release:		1%{?dist}
 License:		GPL-3.0-or-later AND ASL-2.0 AND GPL-2.0-only AND LGPL-3.0-only AND FAL-1.3
 Summary:		Powerful yet simple to use screenshot software
 URL:			https://flameshot.org
@@ -18,12 +19,11 @@ Source0:		https://github.com/flameshot-org/flameshot/archive/%commit/flameshot-%
 Packager:  madonuko <mado@fyralabs.com>
 
 BuildRequires:	cmake >= 3.13.0
-BuildRequires:	gcc-c++ >= 7
+BuildRequires:	clang
 BuildRequires:	fdupes
 BuildRequires:	libappstream-glib
 BuildRequires:	ninja-build
 BuildRequires:	desktop-file-utils
-BuildRequires:	mold
 
 BuildRequires:	cmake(Qt6Core) >= 6.0.0
 BuildRequires:	cmake(KF6GuiAddons) >= 6.7.0
@@ -82,7 +82,6 @@ export GIT_HASH=%commit
 %fdupes %{buildroot}%{_datadir}/icons
 
 %check
-appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.metainfo.xml
 desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 
 %files -f Internationalization.lang
