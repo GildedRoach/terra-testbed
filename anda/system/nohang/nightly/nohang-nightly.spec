@@ -5,7 +5,7 @@
 %global ver         0.3.0
 
 Name:           nohang-nightly
-Version:        %{ver}^%{commit_date}.git%{shortcommit}
+Version:        %{ver}^%{commitdate}.git%{shortcommit}
 Release:        5%{?dist}
 License:        MIT
 Summary:        Sophisticated low memory handler for Linux
@@ -51,10 +51,12 @@ conditions.
     SYSTEMDUNITDIR=%{_unitdir}
 
 %posttrans
+cat <<'EOF'
 To enable and start for servers:
   systemctl enable --now %{pkgname}
 Or for workstations (regular desktop):
   systemctl enable --now %{pkgname}-desktop
+EOF
 
 %post
 %systemd_post %{pkgname}.service %{pkgname}-desktop.service
