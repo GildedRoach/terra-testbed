@@ -2,9 +2,9 @@
 
 %global ver 5.5.0
 
-%global commit          c1a7283a50b6ce8d0459b8864d8713289597bae9
+%global commit          b2a278271b2bbd4267ce4d16f3c38cc09a81029e
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
-%global commitdate      20261116
+%global commitdate      20261117
 
 Name:   	noctalia-nightly
 Version:	%{ver}^%{commitdate}git.%{shortcommit}
@@ -57,8 +57,7 @@ BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libical)
 BuildRequires:  pkgconfig(sndfile)
 
-Provides:       desktop-notification-daemon
-Provides:       PolicyKit-authentication-agent
+Provides:       PolicyKit-authentication-agent = %{evr}
 
 Requires:       hicolor-icon-theme
 Requires:       dejavu-sans-fonts
@@ -112,6 +111,7 @@ done
 %{_appsdir}/dev.noctalia.Noctalia.desktop
 %{_appsdir}/dev.noctalia.Noctalia.Annotator.desktop
 %{_scalableiconsdir}/noctalia.svg
+%{_libexecdir}/noctalia/noctalia-pam-helper
 
 %changelog
 * Sat Oct 24 2026 Owen Zimmerman <owen@fyralabs.com>
