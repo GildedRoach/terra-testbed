@@ -2,8 +2,8 @@
 %global _desc Send usage data from your Python code to PostHog.
 
 Name:			python-%{pypi_name}
-Version:		8.3.0
-Release:		1%{?dist}
+Version:		8.4.0
+Release:		2%{?dist}
 Summary:		Send usage data from your Python code to PostHog
 License:		MIT
 URL:			https://posthog.com/docs/libraries/python
